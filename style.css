@@ -1,0 +1,217 @@
+@import url('https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --color-emerald-950: #051e15;
+  --color-emerald-900: #0a3324;
+  --color-emerald-800: #104b36;
+  --color-emerald-700: #186348;
+  --color-gold-500: #d4af37;
+  --color-gold-400: #e5c158;
+  --color-gold-300: #f3df8a;
+  --color-gold-600: #aa8620;
+  --color-ivory: #faf7f2;
+  --color-cream: #f4eee2;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: #072218;
+  color: #f7f5f0;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+.font-serif-luxury {
+  font-family: 'Playfair Display', serif;
+}
+
+.font-cormorant {
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.font-script {
+  font-family: 'Alex Brush', cursive;
+}
+
+/* Gold Gradient Text */
+.text-gold-gradient {
+  background: linear-gradient(135deg, #f7e7a9 0%, #d4af37 50%, #aa851d 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gold-shimmer {
+  background: linear-gradient(90deg, #d4af37 0%, #fff2b2 50%, #d4af37 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 4s linear infinite;
+}
+
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
+}
+
+/* Glassmorphism */
+.glass-panel {
+  background: rgba(10, 51, 36, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+}
+
+.glass-panel-light {
+  background: rgba(250, 247, 242, 0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+}
+
+.glass-card {
+  background: linear-gradient(145deg, rgba(16, 75, 54, 0.4), rgba(7, 34, 24, 0.6));
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  transition: all 0.35s ease;
+}
+
+.glass-card:hover {
+  border-color: rgba(212, 175, 55, 0.5);
+  box-shadow: 0 10px 30px -10px rgba(212, 175, 55, 0.2);
+  transform: translateY(-4px);
+}
+
+/* Luxury Gold Border Frame */
+.gold-frame {
+  position: relative;
+}
+.gold-frame::before {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+.gold-frame::after {
+  content: '';
+  position: absolute;
+  inset: -12px;
+  border: 1px dashed rgba(212, 175, 55, 0.25);
+  pointer-events: none;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #051e15;
+}
+::-webkit-scrollbar-thumb {
+  background: #186348;
+  border-radius: 4px;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #d4af37;
+}
+
+/* Subtle Floating Elements Animation */
+@keyframes floatParticle {
+  0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+  50% { opacity: 0.6; }
+  100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+}
+
+.floating-petal {
+  position: absolute;
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.4) 0%, rgba(212, 175, 55, 0) 70%);
+  border-radius: 50%;
+  animation: floatParticle 12s infinite linear;
+}
+
+/* Pulse Glow */
+.gold-glow {
+  box-shadow: 0 0 25px rgba(212, 175, 55, 0.25);
+}
+
+.gold-glow-strong {
+  box-shadow: 0 0 35px rgba(212, 175, 55, 0.45);
+}
+
+/* Ticket Styling */
+.ticket-edge-left {
+  position: relative;
+}
+.ticket-edge-left::before {
+  content: '';
+  position: absolute;
+  left: -14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #072218;
+}
+
+.ticket-edge-right {
+  position: relative;
+}
+.ticket-edge-right::after {
+  content: '';
+  position: absolute;
+  right: -14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #072218;
+}
+
+/* Subtle Shimmer for Buttons */
+.gold-btn {
+  background: linear-gradient(135deg, #d4af37 0%, #aa851d 100%);
+  color: #072218;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.gold-btn:hover {
+  background: linear-gradient(135deg, #f5e7b2 0%, #d4af37 100%);
+  box-shadow: 0 4px 20px rgba(212, 175, 55, 0.35);
+  transform: translateY(-2px);
+}
+.gold-btn:active {
+  transform: translateY(0);
+}
+
+.gold-outline-btn {
+  border: 1px solid #d4af37;
+  color: #d4af37;
+  transition: all 0.3s ease;
+}
+.gold-outline-btn:hover {
+  background: rgba(212, 175, 55, 0.15);
+  color: #fcebb1;
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+}
+
+/* Lightbox Modal Animation */
+.modal-fade-in {
+  animation: modalFadeIn 0.3s ease-out forwards;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

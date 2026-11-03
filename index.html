@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Royal Wedding | Mubaraq & Zainab | November 14, 2026</title>
+  <meta name="description" content="Official e-invite and guest registration for the wedding celebration of Mubaraq & Zainab on Saturday, November 14, 2026 in Victoria Island, Lagos.">
+
+  <!-- Open Graph Meta for WhatsApp / Social Media Previews -->
+  <meta property="og:title" content="The Royal Wedding of Mubaraq & Zainab">
+  <meta property="og:description" content="Together with our families, we joyfully invite you to celebrate our wedding on Saturday, November 14, 2026. RSVP and get your VIP access pass.">
+  <meta property="og:image" content="assets/images/couple-dance.jpg">
+  <meta property="og:type" content="website">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            royalEmerald: {
+              950: '#041c13',
+              900: '#0a3324',
+              800: '#104b36',
+              700: '#186348',
+              600: '#237e5c'
+            },
+            royalGold: {
+              100: '#fdf8e6',
+              200: '#f8ecc0',
+              300: '#f3df8a',
+              400: '#e5c158',
+              500: '#d4af37',
+              600: '#b89222',
+              700: '#8e6d14'
+            },
+            ivory: '#faf7f2',
+            cream: '#f4ede1'
+          },
+          fontFamily: {
+            serifLuxury: ['Playfair Display', 'serif'],
+            cormorant: ['Cormorant Garamond', 'serif'],
+            script: ['Alex Brush', 'cursive'],
+            sans: ['Plus Jakarta Sans', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Canvas Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+
+  <!-- QRCode.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-royalEmerald-950 text-amber-50 selection:bg-royalGold-500 selection:text-royalEmerald-950 antialiased">
+
+  <!-- Floating Ambient Particles Background -->
+  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden opacity-30">
+    <div class="floating-petal w-4 h-4 left-[10%] bottom-[-50px] animation-delay-0"></div>
+    <div class="floating-petal w-6 h-6 left-[30%] bottom-[-80px] animation-delay-2000"></div>
+    <div class="floating-petal w-3 h-3 left-[55%] bottom-[-40px] animation-delay-4000"></div>
+    <div class="floating-petal w-5 h-5 left-[75%] bottom-[-60px] animation-delay-6000"></div>
+    <div class="floating-petal w-4 h-4 left-[90%] bottom-[-50px] animation-delay-8000"></div>
+  </div>
+
+  <!-- Top Glass Navigation -->
+  <header class="fixed top-0 left-0 right-0 z-40 bg-royalEmerald-950/80 backdrop-blur-md border-b border-royalGold-500/20 transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Monogram & Logo -->
+      <a href="#hero" class="flex items-center space-x-3 group">
+        <div class="w-12 h-12 rounded-full border border-royalGold-500/40 flex items-center justify-center bg-royalEmerald-900/60 shadow-inner group-hover:border-royalGold-400 transition">
+          <span class="font-script text-2xl text-royalGold-400 couple-monogram">M & Z</span>
+        </div>
+        <div class="hidden sm:block">
+          <span class="font-serifLuxury tracking-wider text-sm uppercase text-royalGold-300 couple-names">Mubaraq & Zainab</span>
+          <p class="text-[10px] tracking-widest text-amber-200/50 uppercase">The Royal Union • 14.11.2026</p>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav class="hidden md:flex items-center space-x-7 text-xs uppercase tracking-widest text-amber-100/80 font-medium">
+        <a href="#hero" class="hover:text-royalGold-400 transition">Home</a>
+        <a href="#our-story" class="hover:text-royalGold-400 transition">Our Story</a>
+        <a href="#gallery" class="hover:text-royalGold-400 transition">Gallery</a>
+        <a href="#events" class="hover:text-royalGold-400 transition">Events</a>
+        <a href="#dress-code" class="hover:text-royalGold-400 transition">Dress Code</a>
+        <a href="#wishes" class="hover:text-royalGold-400 transition">Wishes</a>
+        <a href="#registry" class="hover:text-royalGold-400 transition">Registry</a>
+      </nav>
+
+      <!-- Action Controls: Music + RSVP Button -->
+      <div class="flex items-center space-x-3">
+        <!-- Ambient Music Toggle -->
+        <button id="audioToggleBtn" title="Toggle Wedding Melody" class="flex items-center space-x-2 px-3.5 py-2 rounded-full bg-royalEmerald-900/80 text-royalGold-300 border border-royalGold-500/30 text-xs hover:border-royalGold-400 transition shadow-sm">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"/></svg>
+          <span id="audioStatusText" class="hidden sm:inline font-mono text-[11px]">Play Music</span>
+          <div id="audioWaves" class="flex items-end space-x-0.5 h-3 opacity-40">
+            <span class="w-0.5 h-1.5 bg-royalGold-400 animate-pulse"></span>
+            <span class="w-0.5 h-3 bg-royalGold-400 animate-pulse delay-75"></span>
+            <span class="w-0.5 h-2 bg-royalGold-400 animate-pulse delay-150"></span>
+          </div>
+        </button>
+
+        <!-- Direct RSVP Anchor -->
+        <a href="#rsvp" class="gold-btn px-5 py-2 rounded-full text-xs uppercase tracking-wider font-semibold shadow-md flex items-center space-x-1.5">
+          <span>RSVP</span>
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section id="hero" class="relative min-h-screen pt-28 pb-16 flex items-center justify-center overflow-hidden">
+    <!-- Background Image with Dark Emerald Layer -->
+    <div class="absolute inset-0 z-0">
+      <img src="assets/images/couple-dance.jpg" alt="Wedding Celebration" class="w-full h-full object-cover object-center filter brightness-[0.28] scale-105 transition-transform duration-10000">
+      <div class="absolute inset-0 bg-gradient-to-t from-royalEmerald-950 via-royalEmerald-950/80 to-royalEmerald-950/60"></div>
+    </div>
+
+    <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
+      
+      <!-- Top Royal Crest / Tagline -->
+      <div class="inline-flex items-center space-x-3 px-4 py-1.5 rounded-full bg-royalEmerald-900/60 border border-royalGold-500/30 backdrop-blur-md mb-6">
+        <span class="text-royalGold-400 text-xs">✨</span>
+        <span class="text-[11px] uppercase tracking-[0.25em] text-royalGold-200 font-medium">Bismillah Ar-Rahman Ar-Rahim</span>
+        <span class="text-royalGold-400 text-xs">✨</span>
+      </div>
+
+      <p class="font-cormorant italic text-lg sm:text-2xl text-royalGold-200/90 mb-3 tracking-wide">
+        Together with their families, joyfully request the pleasure of your company
+      </p>
+
+      <!-- Couple Names Heading -->
+      <h1 class="font-serifLuxury text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-4 text-gold-shimmer couple-names leading-tight">
+        Mubaraq & Zainab
+      </h1>
+
+      <p class="font-script text-2xl sm:text-4xl text-amber-200/90 mb-8 couple-tagline">
+        Two Souls, One Divine Journey of Eternal Love
+      </p>
+
+      <!-- Wedding Date & Venue Tag -->
+      <div class="glass-panel px-6 sm:px-10 py-4 rounded-2xl mb-10 max-w-2xl w-full border border-royalGold-500/40 shadow-2xl">
+        <div class="flex flex-col sm:flex-row items-center justify-around gap-4 text-center">
+          <div class="flex items-center space-x-2.5">
+            <div class="w-8 h-8 rounded-full bg-royalGold-500/20 flex items-center justify-center text-royalGold-400">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+            </div>
+            <div class="text-left">
+              <span class="block text-[11px] uppercase tracking-wider text-royalGold-400/80 font-mono">Date</span>
+              <span class="font-serifLuxury font-bold text-sm sm:text-base text-white">Saturday, Nov 14, 2026</span>
+            </div>
+          </div>
+
+          <div class="hidden sm:block w-px h-10 bg-royalGold-500/30"></div>
+
+          <div class="flex items-center space-x-2.5">
+            <div class="w-8 h-8 rounded-full bg-royalGold-500/20 flex items-center justify-center text-royalGold-400">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            </div>
+            <div class="text-left">
+              <span class="block text-[11px] uppercase tracking-wider text-royalGold-400/80 font-mono">Location</span>
+              <span class="font-serifLuxury font-bold text-sm sm:text-base text-white">Victoria Island, Lagos</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- COUNTDOWN TIMER -->
+      <div class="w-full max-w-xl mb-10">
+        <p class="text-xs uppercase tracking-[0.3em] text-royalGold-300/80 mb-4 font-mono" id="countdownBanner">
+          Counting Down to Forever
+        </p>
+
+        <div class="grid grid-cols-4 gap-3 sm:gap-4">
+          <!-- Days -->
+          <div class="glass-card rounded-2xl p-3 sm:p-4 border border-royalGold-500/30 text-center relative overflow-hidden group">
+            <div class="absolute -top-10 -right-10 w-20 h-20 bg-royalGold-500/10 rounded-full blur-xl group-hover:bg-royalGold-500/20 transition"></div>
+            <span id="countdownDays" class="block font-serifLuxury text-2xl sm:text-4xl md:text-5xl font-bold text-white tracking-wider">--</span>
+            <span class="text-[10px] sm:text-xs uppercase tracking-widest text-royalGold-400 font-mono mt-1 block">Days</span>
+          </div>
+          <!-- Hours -->
+          <div class="glass-card rounded-2xl p-3 sm:p-4 border border-royalGold-500/30 text-center relative overflow-hidden group">
+            <div class="absolute -top-10 -right-10 w-20 h-20 bg-royalGold-500/10 rounded-full blur-xl group-hover:bg-royalGold-500/20 transition"></div>
+            <span id="countdownHours" class="block font-serifLuxury text-2xl sm:text-4xl md:text-5xl font-bold text-white tracking-wider">--</span>
+            <span class="text-[10px] sm:text-xs uppercase tracking-widest text-royalGold-400 font-mono mt-1 block">Hours</span>
+          </div>
+          <!-- Minutes -->
+          <div class="glass-card rounded-2xl p-3 sm:p-4 border border-royalGold-500/30 text-center relative overflow-hidden group">
+            <div class="absolute -top-10 -right-10 w-20 h-20 bg-royalGold-500/10 rounded-full blur-xl group-hover:bg-royalGold-500/20 transition"></div>
+            <span id="countdownMinutes" class="block font-serifLuxury text-2xl sm:text-4xl md:text-5xl font-bold text-white tracking-wider">--</span>
+            <span class="text-[10px] sm:text-xs uppercase tracking-widest text-royalGold-400 font-mono mt-1 block">Minutes</span>
+          </div>
+          <!-- Seconds -->
+          <div class="glass-card rounded-2xl p-3 sm:p-4 border border-royalGold-500/30 text-center relative overflow-hidden group">
+            <div class="absolute -top-10 -right-10 w-20 h-20 bg-royalGold-500/10 rounded-full blur-xl group-hover:bg-royalGold-500/20 transition"></div>
+            <span id="countdownSeconds" class="block font-serifLuxury text-2xl sm:text-4xl md:text-5xl font-bold text-royalGold-400 tracking-wider">--</span>
+            <span class="text-[10px] sm:text-xs uppercase tracking-widest text-royalGold-400 font-mono mt-1 block">Seconds</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex flex-wrap items-center justify-center gap-4">
+        <a href="#rsvp" class="gold-btn px-8 py-3.5 rounded-full text-sm uppercase tracking-widest font-bold shadow-xl flex items-center space-x-2">
+          <span>Register / RSVP Now</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </a>
+
+        <!-- Calendar Dropdown / Add to Calendar -->
+        <div class="relative group">
+          <button class="gold-outline-btn px-6 py-3.5 rounded-full text-sm uppercase tracking-wider font-medium flex items-center space-x-2">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+            <span>Save to Calendar</span>
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="absolute left-1/2 -translate-x-1/2 mt-2 w-56 rounded-2xl bg-royalEmerald-900 border border-royalGold-500/40 shadow-2xl py-2 hidden group-hover:block transition-all z-20">
+            <button id="addToGoogleCalendar" class="w-full text-left px-4 py-2.5 text-xs text-amber-100 hover:bg-royalEmerald-800 hover:text-royalGold-300 flex items-center space-x-2.5">
+              <span>📅</span>
+              <span>Google Calendar</span>
+            </button>
+            <button id="downloadICSBtn" class="w-full text-left px-4 py-2.5 text-xs text-amber-100 hover:bg-royalEmerald-800 hover:text-royalGold-300 flex items-center space-x-2.5">
+              <span>🍏</span>
+              <span>Apple / Outlook (.ics)</span>
+            </button>
+          </div>
+        </div>
+
+        <a href="#gallery" class="px-6 py-3.5 rounded-full text-sm text-amber-200/80 hover:text-white transition font-medium">
+          View Photos &darr;
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- OUR LOVE STORY & COUPLE SPOTLIGHT -->
+  <section id="our-story" class="py-24 relative bg-gradient-to-b from-royalEmerald-950 via-royalEmerald-900/40 to-royalEmerald-950 border-t border-royalGold-500/10">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="text-xs uppercase tracking-[0.25em] text-royalGold-400 font-mono block mb-2">Our Story</span>
+        <h2 class="font-serifLuxury text-3xl sm:text-5xl font-bold text-white mb-4">
+          Two Hearts, One Written Destiny
+        </h2>
+        <div class="w-20 h-0.5 bg-gradient-to-r from-transparent via-royalGold-400 to-transparent mx-auto"></div>
+        <p class="font-cormorant italic text-xl text-amber-200/80 mt-4">
+          "And among His signs is that He created for you spouses from among yourselves, that you may find tranquility in them, and He placed between you love and mercy."
+        </p>
+      </div>
+
+      <!-- Couple Feature Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-stretch">
+        
+        <!-- The Groom -->
+        <div class="glass-card rounded-3xl p-8 border border-royalGold-500/25 flex flex-col justify-between relative overflow-hidden group">
+          <div class="absolute -right-16 -top-16 w-36 h-36 bg-royalGold-500/10 rounded-full blur-2xl group-hover:bg-royalGold-500/20 transition"></div>
+          <div>
+            <div class="flex items-center space-x-4 mb-6">
+              <div class="w-16 h-16 rounded-2xl overflow-hidden border-2 border-royalGold-500/50 shadow-md">
+                <img src="assets/images/couple-modern.jpg" alt="The Groom" class="w-full h-full object-cover object-top">
+              </div>
+              <div>
+                <span class="text-xs font-mono uppercase tracking-widest text-royalGold-400">The Groom</span>
+                <h3 class="font-serifLuxury text-2xl font-bold text-white groom-name">Mubaraq</h3>
+              </div>
+            </div>
+            <p class="text-amber-100/80 text-sm leading-relaxed font-sans mb-4">
+              "From the very first conversation, Zainab brought a light that made everything clearer, calmer, and more joyful. Walking through life by her side is the greatest blessing I could ever ask for. On November 14, I get to promise my forever to my best friend."
+            </p>
+          </div>
+          <div class="pt-4 border-t border-royalGold-500/20 flex items-center justify-between text-xs text-royalGold-300 font-script text-xl">
+            <span>Forever yours,</span>
+            <span class="groom-name">Mubaraq</span>
+          </div>
+        </div>
+
+        <!-- The Bride -->
+        <div class="glass-card rounded-3xl p-8 border border-royalGold-500/25 flex flex-col justify-between relative overflow-hidden group">
+          <div class="absolute -right-16 -top-16 w-36 h-36 bg-royalGold-500/10 rounded-full blur-2xl group-hover:bg-royalGold-500/20 transition"></div>
+          <div>
+            <div class="flex items-center space-x-4 mb-6">
+              <div class="w-16 h-16 rounded-2xl overflow-hidden border-2 border-royalGold-500/50 shadow-md">
+                <img src="assets/images/couple-embrace.jpg" alt="The Bride" class="w-full h-full object-cover object-center">
+              </div>
+              <div>
+                <span class="text-xs font-mono uppercase tracking-widest text-royalGold-400">The Bride</span>
+                <h3 class="font-serifLuxury text-2xl font-bold text-white bride-name">Zainab</h3>
+              </div>
+            </div>
+            <p class="text-amber-100/80 text-sm leading-relaxed font-sans mb-4">
+              "Mubaraq's gentle patience, wisdom, and laughter showed me what true love feels like. He is my peace and my biggest cheerleader. I cannot wait to celebrate this sacred milestone surrounded by all of our dearest family and friends."
+            </p>
+          </div>
+          <div class="pt-4 border-t border-royalGold-500/20 flex items-center justify-between text-xs text-royalGold-300 font-script text-xl">
+            <span>Always and forever,</span>
+            <span class="bride-name">Zainab</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PHOTO GALLERY SECTION -->
+  <section id="gallery" class="py-24 relative bg-royalEmerald-950 border-t border-royalGold-500/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="text-xs uppercase tracking-[0.25em] text-royalGold-400 font-mono block mb-2">Memories & Portraits</span>
+        <h2 class="font-serifLuxury text-3xl sm:text-5xl font-bold text-white mb-3">
+          Moments of Grace & Celebration
+        </h2>
+        <p class="text-amber-200/70 text-sm">
+          Click any portrait to view in high definition
+        </p>
+      </div>
+
+      <!-- 4 Photo Grid (Showcasing all 4 user photos) -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- Photo 1: Modern Attire (Mustard suit & white lace) -->
+        <div class="gallery-item-btn group relative rounded-3xl overflow-hidden border border-royalGold-500/30 cursor-pointer shadow-xl bg-royalEmerald-900/50" data-gallery-index="0">
+          <div class="aspect-[3/4] overflow-hidden">
+            <img src="assets/images/couple-modern.jpg" alt="Modern Wedding Elegance" class="w-full h-full object-cover object-top transition duration-700 group-hover:scale-105">
+          </div>
+          <div class="absolute inset-0 bg-gradient-to-t from-royalEmerald-950 via-transparent opacity-80 group-hover:opacity-90 transition"></div>
+          <div class="absolute bottom-0 inset-x-0 p-5 transform transition duration-300">
+            <span class="text-[10px] font-mono uppercase tracking-widest text-royalGold-400">Haute Couture</span>
+            <h4 class="font-serifLuxury text-lg font-bold text-white leading-tight">The Promise of Forever</h4>
+            <p class="text-xs text-amber-200/70 mt-1 line-clamp-1">Wrapped in light and timeless grace.</p>
+          </div>
+          <div class="absolute top-4 right-4 w-9 h-9 rounded-full bg-royalEmerald-950/70 border border-royalGold-500/40 flex items-center justify-center text-royalGold-400 opacity-0 group-hover:opacity-100 transition">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg>
+          </div>
+        </div>
+
+        <!-- Photo 2: Traditional Dance (Joyful Yoruba dance) -->
+        <div class="gallery-item-btn group relative rounded-3xl overflow-hidden border border-royalGold-500/30 cursor-pointer shadow-xl bg-royalEmerald-900/50" data-gallery-index="1">
+          <div class="aspect-[3/4] overflow-hidden">
+            <img src="assets/images/couple-dance.jpg" alt="Joyful Traditional Dance" class="w-full h-full object-cover object-top transition duration-700 group-hover:scale-105">
+          </div>
+          <div class="absolute inset-0 bg-gradient-to-t from-royalEmerald-950 via-transparent opacity-80 group-hover:opacity-90 transition"></div>
+          <div class="absolute bottom-0 inset-x-0 p-5 transform transition duration-300">
+            <span class="text-[10px] font-mono uppercase tracking-widest text-royalGold-400">Celebration</span>
+            <h4 class="font-serifLuxury text-lg font-bold text-white leading-tight">The Dance of Pure Joy</h4>
+            <p class="text-xs text-amber-200/70 mt-1 line-clamp-1">Stepping into marital bliss with vibrant rhythm.</p>
+          </div>
+          <div class="absolute top-4 right-4 w-9 h-9 rounded-full bg-royalEmerald-950/70 border border-royalGold-500/40 flex items-center justify-center text-royalGold-400 opacity-0 group-hover:opacity-100 transition">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg>
+          </div>
+        </div>
+
+        <!-- Photo 3: Traditional Regality (Groom seated, Bride standing) -->
+        <div class="gallery-item-btn group relative rounded-3xl overflow-hidden border border-royalGold-500/30 cursor-pointer shadow-xl bg-royalEmerald-900/50" data-gallery-index="2">
+          <div class="aspect-[3/4] overflow-hidden">
+            <img src="assets/images/couple-regal.jpg" alt="Regal Traditional Heritage" class="w-full h-full object-cover object-top transition duration-700 group-hover:scale-105">
+          </div>
+          <div class="absolute inset-0 bg-gradient-to-t from-royalEmerald-950 via-transparent opacity-80 group-hover:opacity-90 transition"></div>
+          <div class="absolute bottom-0 inset-x-0 p-5 transform transition duration-300">
+            <span class="text-[10px] font-mono uppercase tracking-widest text-royalGold-400">Royal Heritage</span>
+            <h4 class="font-serifLuxury text-lg font-bold text-white leading-tight">Regal Heritage & Grace</h4>
+            <p class="text-xs text-amber-200/70 mt-1 line-clamp-1">Honoring our culture in emerald and gold.</p>
+          </div>
+          <div class="absolute top-4 right-4 w-9 h-9 rounded-full bg-royalEmerald-950/70 border border-royalGold-500/40 flex items-center justify-center text-royalGold-400 opacity-0 group-hover:opacity-100 transition">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg>
+          </div>
+        </div>
+
+        <!-- Photo 4: Intimate Embrace Portrait -->
+        <div class="gallery-item-btn group relative rounded-3xl overflow-hidden border border-royalGold-500/30 cursor-pointer shadow-xl bg-royalEmerald-900/50" data-gallery-index="3">
+          <div class="aspect-[3/4] overflow-hidden">
+            <img src="assets/images/couple-embrace.jpg" alt="Intimate Couple Portrait" class="w-full h-full object-cover object-top transition duration-700 group-hover:scale-105">
+          </div>
+          <div class="absolute inset-0 bg-gradient-to-t from-royalEmerald-950 via-transparent opacity-80 group-hover:opacity-90 transition"></div>
+          <div class="absolute bottom-0 inset-x-0 p-5 transform transition duration-300">
+            <span class="text-[10px] font-mono uppercase tracking-widest text-royalGold-400">Intimacy</span>
+            <h4 class="font-serifLuxury text-lg font-bold text-white leading-tight">Two Hearts, One Sanctuary</h4>
+            <p class="text-xs text-amber-200/70 mt-1 line-clamp-1">Finding our eternal peace in one another.</p>
+          </div>
+          <div class="absolute top-4 right-4 w-9 h-9 rounded-full bg-royalEmerald-950/70 border border-royalGold-500/40 flex items-center justify-center text-royalGold-400 opacity-0 group-hover:opacity-100 transition">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- EVENT DETAILS & SCHEDULE -->
+  <section id="events" class="py-24 relative bg-gradient-to-b from-royalEmerald-950 via-royalEmerald-900/30 to-royalEmerald-950 border-t border-royalGold-500/10">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="text-xs uppercase tracking-[0.25em] text-royalGold-400 font-mono block mb-2">Order of Events</span>
+        <h2 class="font-serifLuxury text-3xl sm:text-5xl font-bold text-white mb-3">
+          The Wedding Itinerary
+        </h2>
+        <p class="text-amber-200/70 text-sm">
+          Saturday, November 14, 2026 • Victoria Island, Lagos
+        </p>
+      </div>
+
+      <!-- Events Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        
+        <!-- Event 1: Solemnization -->
+        <div class="glass-card rounded-3xl p-8 border border-royalGold-500/30 relative flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <span class="px-3.5 py-1 rounded-full bg-royalGold-500/20 text-royalGold-300 font-mono text-xs font-semibold border border-royalGold-500/30">
+                PART I • MORNING
+              </span>
+              <span class="text-xs font-mono text-amber-200/60">10:00 AM — 1:00 PM</span>
+            </div>
+            
+            <h3 class="font-serifLuxury text-2xl font-bold text-white mb-2">
+              Traditional Engagement & Nikkah Solemnization
+            </h3>
+            
+            <p class="text-amber-100/80 text-sm mb-6 leading-relaxed">
+              The joyous customary rites, exchange of marital vows, Quranic solemnization, and presentation of the bride.
+            </p>
+
+            <div class="space-y-3 py-4 border-y border-royalGold-500/15 text-xs">
+              <div class="flex items-start space-x-3">
+                <span class="text-royalGold-400 mt-0.5">📍</span>
+                <div>
+                  <span class="font-bold text-white block">The Grand Emerald Ballroom</span>
+                  <span class="text-amber-200/70">Landmark Centre, Water Corporation Dr, Victoria Island, Lagos</span>
+                </div>
+              </div>
+
+              <div class="flex items-start space-x-3">
+                <span class="text-royalGold-400 mt-0.5">👗</span>
+                <div>
+                  <span class="font-bold text-white block">Dress Code</span>
+                  <span class="text-amber-200/70">Traditional Glamour • Emerald Green & Gold Aso Ebi</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-6 flex items-center justify-between pt-2">
+            <a href="https://maps.google.com/?q=Landmark+Centre+Victoria+Island+Lagos" target="_blank" class="text-royalGold-400 hover:text-royalGold-200 text-xs font-bold flex items-center space-x-1.5">
+              <span>View on Google Maps</span>
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+            </a>
+            <span class="text-amber-400/50 text-[11px] font-mono">Gates Open: 09:30 AM</span>
+          </div>
+        </div>
+
+        <!-- Event 2: Reception -->
+        <div class="glass-card rounded-3xl p-8 border border-royalGold-500/30 relative flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <span class="px-3.5 py-1 rounded-full bg-royalGold-500/20 text-royalGold-300 font-mono text-xs font-semibold border border-royalGold-500/30">
+                PART II • EVENING
+              </span>
+              <span class="text-xs font-mono text-amber-200/60">2:00 PM — 8:00 PM</span>
+            </div>
+            
+            <h3 class="font-serifLuxury text-2xl font-bold text-white mb-2">
+              The Royal Banquet & Grand Reception
+            </h3>
+            
+            <p class="text-amber-100/80 text-sm mb-6 leading-relaxed">
+              Grand entrance of the couple, 5-course banquet dinner, champagne toast, live orchestra, and vibrant dance celebration.
+            </p>
+
+            <div class="space-y-3 py-4 border-y border-royalGold-500/15 text-xs">
+              <div class="flex items-start space-x-3">
+                <span class="text-royalGold-400 mt-0.5">📍</span>
+                <div>
+                  <span class="font-bold text-white block">The Imperial Grand Ballroom</span>
+                  <span class="text-amber-200/70">Eko Hotel & Suites, Adetokunbo Ademola St, Victoria Island, Lagos</span>
+                </div>
+              </div>
+
+              <div class="flex items-start space-x-3">
+                <span class="text-royalGold-400 mt-0.5">👔</span>
+                <div>
+                  <span class="font-bold text-white block">Dress Code</span>
+                  <span class="text-amber-200/70">Black Tie / Royal Glamour • Gold Accents</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-6 flex items-center justify-between pt-2">
+            <a href="https://maps.google.com/?q=Eko+Hotel+and+Suites+Victoria+Island+Lagos" target="_blank" class="text-royalGold-400 hover:text-royalGold-200 text-xs font-bold flex items-center space-x-1.5">
+              <span>View on Google Maps</span>
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+            </a>
+            <span class="text-amber-400/50 text-[11px] font-mono">After-Party follows</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- COLORS OF THE DAY & DRESS CODE -->
+  <section id="dress-code" class="py-24 relative bg-royalEmerald-950 border-t border-royalGold-500/10">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="text-xs uppercase tracking-[0.25em] text-royalGold-400 font-mono block mb-2">Aso Ebi & Glamour</span>
+        <h2 class="font-serifLuxury text-3xl sm:text-5xl font-bold text-white mb-3">
+          Colors of the Day
+        </h2>
+        <p class="text-amber-200/70 text-sm">
+          We invite our esteemed guests to grace this celebration in our chosen celebratory palette:
+        </p>
+      </div>
+
+      <!-- Color Swatches -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 mb-12">
+        
+        <!-- Swatch 1 -->
+        <div class="glass-card p-5 rounded-2xl text-center border border-royalGold-500/20">
+          <div class="w-16 h-16 rounded-full mx-auto mb-3 shadow-lg border-2 border-royalGold-500/40" style="background-color: #0a3324;"></div>
+          <h4 class="font-bold text-white text-sm">Emerald Green</h4>
+          <span class="text-xs font-mono text-royalGold-300">#0A3324</span>
+          <p class="text-[11px] text-amber-200/60 mt-1">Regal Majesty & Life</p>
+        </div>
+
+        <!-- Swatch 2 -->
+        <div class="glass-card p-5 rounded-2xl text-center border border-royalGold-500/20">
+          <div class="w-16 h-16 rounded-full mx-auto mb-3 shadow-lg border-2 border-royalGold-500/40" style="background-color: #d4af37;"></div>
+          <h4 class="font-bold text-white text-sm">Champagne Gold</h4>
+          <span class="text-xs font-mono text-royalGold-300">#D4AF37</span>
+          <p class="text-[11px] text-amber-200/60 mt-1">Prosperity & Light</p>
+        </div>
+
+        <!-- Swatch 3 -->
+        <div class="glass-card p-5 rounded-2xl text-center border border-royalGold-500/20">
+          <div class="w-16 h-16 rounded-full mx-auto mb-3 shadow-lg border-2 border-royalGold-500/40" style="background-color: #c99700;"></div>
+          <h4 class="font-bold text-white text-sm">Mustard Sun</h4>
+          <span class="text-xs font-mono text-royalGold-300">#C99700</span>
+          <p class="text-[11px] text-amber-200/60 mt-1">Warmth & Radiance</p>
+        </div>
+
+        <!-- Swatch 4 -->
+        <div class="glass-card p-5 rounded-2xl text-center border border-royalGold-500/20">
+          <div class="w-16 h-16 rounded-full mx-auto mb-3 shadow-lg border-2 border-royalGold-500/40" style="background-color: #faf7f2;"></div>
+          <h4 class="font-bold text-white text-sm">Alabaster Ivory</h4>
+          <span class="text-xs font-mono text-royalGold-300">#FAF7F2</span>
+          <p class="text-[11px] text-amber-200/60 mt-1">Grace & Pure Blessing</p>
+        </div>
+
+      </div>
+
+      <!-- Styling Note Card -->
+      <div class="glass-panel p-6 sm:p-8 rounded-3xl border border-royalGold-500/30 text-center max-w-2xl mx-auto">
+        <h4 class="font-serifLuxury text-lg font-bold text-royalGold-300 mb-2">Style & Headwear Guide</h4>
+        <p class="text-xs sm:text-sm text-amber-100/80 leading-relaxed font-sans">
+          Gents are encouraged to don traditional Agbada / Kaftan with emerald or green Fila, or tailored formal suits. Ladies are welcomed in grand Lace, Gele headwraps, and evening gowns adhering to the color accents.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- RSVP & REGISTRATION SECTION (CORE FUNCTIONALITY) -->
+  <section id="rsvp" class="py-24 relative bg-gradient-to-b from-royalEmerald-950 via-royalEmerald-900/50 to-royalEmerald-950 border-t border-royalGold-500/20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-14">
+        <span class="text-xs uppercase tracking-[0.25em] text-royalGold-400 font-mono block mb-2">Online Registration</span>
+        <h2 class="font-serifLuxury text-3xl sm:text-5xl font-bold text-white mb-3">
+          Kindly RSVP by November 10, 2026
+        </h2>
+        <p class="text-amber-200/80 text-sm">
+          Please confirm your attendance below. Each confirmed registration generates a bespoke VIP digital access pass with scannable QR verification.
+        </p>
+      </div>
+
+      <!-- RSVP Form Card -->
+      <div class="glass-panel p-6 sm:p-10 md:p-12 rounded-3xl border border-royalGold-500/40 shadow-2xl relative overflow-hidden">
+        
+        <form id="weddingRSVPForm" class="space-y-6">
+          
+          <!-- Attendance Radio Selector -->
+          <div class="pb-6 border-b border-royalGold-500/20">
+            <label class="block text-xs font-mono uppercase tracking-widest text-royalGold-300 mb-3 text-center sm:text-left">
+              Will you be joining us in celebration?
+            </label>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <label class="relative flex items-center p-4 rounded-2xl border border-royalGold-500/30 cursor-pointer hover:bg-royalEmerald-900/60 transition group has-[:checked]:border-royalGold-400 has-[:checked]:bg-royalEmerald-900/90">
+                <input type="radio" name="attending" value="yes" checked class="w-4 h-4 text-royalGold-500 focus:ring-royalGold-400 bg-royalEmerald-950 border-royalGold-400">
+                <div class="ml-3">
+                  <span class="font-bold text-white text-sm block">Joyfully Accepts</span>
+                  <span class="text-xs text-amber-200/70">Can't wait to celebrate together!</span>
+                </div>
+              </label>
+
+              <label class="relative flex items-center p-4 rounded-2xl border border-royalGold-500/30 cursor-pointer hover:bg-royalEmerald-900/60 transition group has-[:checked]:border-royalGold-400 has-[:checked]:bg-royalEmerald-900/90">
+                <input type="radio" name="attending" value="no" class="w-4 h-4 text-royalGold-500 focus:ring-royalGold-400 bg-royalEmerald-950 border-royalGold-400">
+                <div class="ml-3">
+                  <span class="font-bold text-white text-sm block">Regretfully Declines</span>
+                  <span class="text-xs text-amber-200/70">Will be celebrating in spirit</span>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- Guest Contact Info -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div>
+              <label for="guestFullName" class="block text-xs font-mono uppercase tracking-wider text-royalGold-300 mb-2">
+                Full Name(s) *
+              </label>
+              <input type="text" id="guestFullName" required placeholder="e.g. Adebayo Ogunlesi" class="w-full px-4 py-3 rounded-xl bg-royalEmerald-950/80 border border-royalGold-500/30 text-white placeholder-amber-200/30 focus:border-royalGold-400 focus:outline-none focus:ring-1 focus:ring-royalGold-400 transition text-sm">
+            </div>
+
+            <div>
+              <label for="guestEmail" class="block text-xs font-mono uppercase tracking-wider text-royalGold-300 mb-2">
+                Email Address *
+              </label>
+              <input type="email" id="guestEmail" required placeholder="name@example.com" class="w-full px-4 py-3 rounded-xl bg-royalEmerald-950/80 border border-royalGold-500/30 text-white placeholder-amber-200/30 focus:border-royalGold-400 focus:outline-none focus:ring-1 focus:ring-royalGold-400 transition text-sm">
+            </div>
+          </div>
+
+          <!-- Phone Number -->
+          <div>
+            <label for="guestPhone" class="block text-xs font-mono uppercase tracking-wider text-royalGold-300 mb-2">
+              WhatsApp / Phone Number
+            </label>
+            <input type="tel" id="guestPhone" placeholder="+234 800 000 0000" class="w-full px-4 py-3 rounded-xl bg-royalEmerald-950/80 border border-royalGold-500/30 text-white placeholder-amber-200/30 focus:border-royalGold-400 focus:outline-none focus:ring-1 focus:ring-royalGold-400 transition text-sm">
+          </div>
+
+          <!-- ATTENDING CONDITIONAL DETAILS -->
+          <div id="attendingDetailsFields" class="space-y-6 pt-2">
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <!-- Guest Count -->
+              <div>
+                <label for="guestCount" class="block text-xs font-mono uppercase tracking-wider text-royalGold-300 mb-2">
+                  Number of Attendees
+                </label>
+                <select id="guestCount" class="w-full px-4 py-3 rounded-xl bg-royalEmerald-950/80 border border-royalGold-500/30 text-white focus:border-royalGold-400 focus:outline-none focus:ring-1 focus:ring-royalGold-400 transition text-sm">
+                  <option value="1">1 Guest (Self only)</option>
+                  <option value="2">2 Guests (Couple / +1)</option>
+                  <option value="3">3 Guests (Family)</option>
+                  <option value="4">4 Guests (Family)</option>
+                </select>
+              </div>
+
+              <!-- Meal Preference -->
+              <div>
+                <label for="mealPreference" class="block text-xs font-mono uppercase tracking-wider text-royalGold-300 mb-2">
+                  Banquet Meal Choice
+                </label>
+                <select id="mealPreference" class="w-full px-4 py-3 rounded-xl bg-royalEmerald-950/80 border border-royalGold-500/30 text-white focus:border-royalGold-400 focus:outline-none focus:ring-1 focus:ring-royalGold-400 transition text-sm">
+                  <option value="Jollof & Fried Rice with Crispy Chicken & Asun">Royal Jollof & Fried Rice with Crispy Chicken & Asun</option>
+                  <option value="Traditional Pounded Yam & Egusi with Assorted Meat">Pounded Yam & Egusi with Assorted Goat Meat & Fish</option>
+                  <option value="Grilled Croaker Fish with Fried Plantains & Yam Chips">Grilled Croaker Fish with Dodo & Yam Chips</option>
+                  <option value="Seafood Pasta & Lobster Special">Seafood Pasta & Jumbo Prawns</option>
+                  <option value="Chef's Vegan / Vegetarian Garden Platter">Chef's Vegan / Vegetarian Platter</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Plus-One Names Container -->
+            <div id="plusOneNamesContainer" class="hidden">
+              <label for="plusOneNames" class="block text-xs font-mono uppercase tracking-wider text-royalGold-300 mb-2">
+                Name of Accompanying Guest(s)
+              </label>
+              <input type="text" id="plusOneNames" placeholder="e.g. Mrs. Folashade Ogunlesi" class="w-full px-4 py-3 rounded-xl bg-royalEmerald-950/80 border border-royalGold-500/30 text-white placeholder-amber-200/30 focus:border-royalGold-400 focus:outline-none text-sm">
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <!-- Dietary Restrictions -->
+              <div>
+                <label for="dietaryNotes" class="block text-xs font-mono uppercase tracking-wider text-royalGold-300 mb-2">
+                  Allergies / Dietary Restrictions
+                </label>
+                <input type="text" id="dietaryNotes" placeholder="e.g. Shellfish allergy, Halal only" class="w-full px-4 py-3 rounded-xl bg-royalEmerald-950/80 border border-royalGold-500/30 text-white placeholder-amber-200/30 focus:border-royalGold-400 focus:outline-none text-sm">
+              </div>
+
+              <!-- Song Request -->
+              <div>
+                <label for="songRequest" class="block text-xs font-mono uppercase tracking-wider text-royalGold-300 mb-2">
+                  Song Request for the DJ 🎶
+                </label>
+                <input type="text" id="songRequest" placeholder="e.g. Asake - Lonely at the Top" class="w-full px-4 py-3 rounded-xl bg-royalEmerald-950/80 border border-royalGold-500/30 text-white placeholder-amber-200/30 focus:border-royalGold-400 focus:outline-none text-sm">
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Message / Wishes -->
+          <div>
+            <label for="weddingWishes" class="block text-xs font-mono uppercase tracking-wider text-royalGold-300 mb-2">
+              Message, Prayer or Advice for the Couple
+            </label>
+            <textarea id="weddingWishes" rows="3" placeholder="Share your warm thoughts, heartfelt prayers, or love for the couple..." class="w-full px-4 py-3 rounded-xl bg-royalEmerald-950/80 border border-royalGold-500/30 text-white placeholder-amber-200/30 focus:border-royalGold-400 focus:outline-none text-sm"></textarea>
+          </div>
+
+          <!-- Submit Button -->
+          <div class="pt-4">
+            <button type="submit" class="w-full gold-btn py-4 rounded-2xl text-base font-bold uppercase tracking-wider shadow-2xl flex items-center justify-center space-x-2">
+              <span>Submit Registration & Generate Pass</span>
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
+            </button>
+            <p class="text-[11px] text-center text-amber-200/50 mt-3">
+              Your details are securely kept for guest coordination and admission security.
+            </p>
+          </div>
+
+        </form>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- GUESTBOOK & WISHES WALL -->
+  <section id="wishes" class="py-24 relative bg-royalEmerald-950 border-t border-royalGold-500/10">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="text-xs uppercase tracking-[0.25em] text-royalGold-400 font-mono block mb-2">Guestbook</span>
+        <h2 class="font-serifLuxury text-3xl sm:text-5xl font-bold text-white mb-3">
+          Prayers & Blessings Wall
+        </h2>
+        <p class="text-amber-200/70 text-sm">
+          Heartfelt words, advice, and blessings from our cherished loved ones:
+        </p>
+      </div>
+
+      <!-- Live Wishes Grid -->
+      <div id="wishesContainer" class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+        <!-- Injected via JavaScript -->
+      </div>
+
+      <!-- Quick Wish Submission Form -->
+      <div class="glass-panel p-6 sm:p-8 rounded-3xl max-w-2xl mx-auto border border-royalGold-500/30">
+        <h3 class="font-serifLuxury text-xl font-bold text-white mb-4 text-center">
+          Leave a Blessing for <span class="couple-names">Mubaraq & Zainab</span>
+        </h3>
+        <form id="newWishForm" class="space-y-4">
+          <div>
+            <input type="text" id="wishAuthorName" placeholder="Your Name or Family Name" required class="w-full px-4 py-3 rounded-xl bg-royalEmerald-950/80 border border-royalGold-500/30 text-white placeholder-amber-200/40 text-sm focus:outline-none focus:border-royalGold-400">
+          </div>
+          <div>
+            <textarea id="wishMessageText" rows="3" placeholder="Write your heartfelt wish or prayer..." required class="w-full px-4 py-3 rounded-xl bg-royalEmerald-950/80 border border-royalGold-500/30 text-white placeholder-amber-200/40 text-sm focus:outline-none focus:border-royalGold-400"></textarea>
+          </div>
+          <button type="submit" class="w-full gold-outline-btn py-3 rounded-xl text-xs uppercase tracking-widest font-bold">
+            Post to Wishes Wall ✨
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- WISHING WELL & REGISTRY -->
+  <section id="registry" class="py-24 relative bg-gradient-to-b from-royalEmerald-950 via-royalEmerald-900/40 to-royalEmerald-950 border-t border-royalGold-500/10">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      
+      <div class="max-w-2xl mx-auto mb-14">
+        <span class="text-xs uppercase tracking-[0.25em] text-royalGold-400 font-mono block mb-2">Gifts & Wishing Well</span>
+        <h2 class="font-serifLuxury text-3xl sm:text-5xl font-bold text-white mb-3">
+          Your Presence is Our Greatest Gift
+        </h2>
+        <p class="font-cormorant text-xl text-amber-200/80 italic leading-relaxed">
+          "Having you celebrate with us is the greatest honor. Should you wish to bless our new home and journey with a monetary gift, our wedding registry details are provided below with our deepest gratitude."
+        </p>
+      </div>
+
+      <!-- Bank Details Card -->
+      <div class="glass-card p-8 sm:p-10 rounded-3xl border border-royalGold-500/40 max-w-lg mx-auto shadow-2xl relative">
+        <div class="w-14 h-14 rounded-full bg-royalGold-500/20 border border-royalGold-500/40 flex items-center justify-center text-royalGold-400 mx-auto mb-5">
+          <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+
+        <span class="text-[11px] font-mono uppercase tracking-widest text-royalGold-400 block mb-1">Wedding Gift Account</span>
+        <h4 id="bankName" class="font-bold text-xl text-white mb-1">Guaranty Trust Bank (GTBank)</h4>
+        <p id="bankAccountName" class="text-xs text-amber-200/70 mb-5">Mubaraq & Zainab Wedding Fund</p>
+
+        <!-- Account Number Box with 1-click copy -->
+        <div class="bg-royalEmerald-950/90 border border-royalGold-500/30 rounded-2xl p-4 flex items-center justify-between mb-4">
+          <div class="text-left">
+            <span class="text-[10px] font-mono text-amber-400/60 uppercase block">Account Number</span>
+            <span id="bankAccountNumber" class="font-mono text-xl sm:text-2xl font-bold tracking-widest text-royalGold-300">0789456123</span>
+          </div>
+          <button class="copy-trigger px-4 py-2 rounded-xl bg-royalGold-500 text-royalEmerald-950 font-semibold text-xs hover:bg-royalGold-400 transition" data-copy-text="0789456123">
+            Copy
+          </button>
+        </div>
+
+        <p class="text-[11px] text-amber-200/50 italic">
+          May Almighty Allah multiply your generosity and bless your households in return.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="py-12 bg-royalEmerald-950 border-t border-royalGold-500/20 text-center">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
+      
+      <div class="w-12 h-12 rounded-full border border-royalGold-500/40 flex items-center justify-center bg-royalEmerald-900/60 mb-4">
+        <span class="font-script text-2xl text-royalGold-400 couple-monogram">M & Z</span>
+      </div>
+
+      <h3 class="font-serifLuxury text-xl font-bold text-white mb-1 couple-names">Mubaraq & Zainab</h3>
+      <p class="font-mono text-xs text-royalGold-400 mb-6 wedding-hashtag">#MubaraqAndZainab2026</p>
+
+      <div class="flex items-center space-x-6 text-xs text-amber-200/60 mb-8">
+        <a href="#hero" class="hover:text-royalGold-300 transition">Back to Top</a>
+        <span>•</span>
+        <a href="#events" class="hover:text-royalGold-300 transition">Event Details</a>
+        <span>•</span>
+        <a href="#rsvp" class="hover:text-royalGold-300 transition">RSVP Access</a>
+        <span>•</span>
+        <!-- Discreet Admin Portal Link -->
+        <button id="openAdminModalBtn" class="text-royalGold-400/80 hover:text-royalGold-300 transition underline underline-offset-4">
+          Organizer Portal
+        </button>
+      </div>
+
+      <p class="text-[11px] text-amber-200/40 font-mono">
+        Designed with eternal elegance for the Wedding of the Year • Saturday, November 14, 2026
+      </p>
+
+    </div>
+  </footer>
+
+  <!-- PERSONALIZED VIP TICKET MODAL -->
+  <div id="ticketModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-center justify-center p-4">
+    <div class="bg-royalEmerald-950 border-2 border-royalGold-500/60 rounded-3xl max-w-xl w-full p-6 sm:p-8 relative shadow-2xl modal-fade-in max-h-[90vh] overflow-y-auto">
+      
+      <!-- Close button -->
+      <button id="ticketModalClose" class="absolute top-5 right-5 text-amber-300/80 hover:text-white text-2xl w-8 h-8 rounded-full flex items-center justify-center bg-royalEmerald-900 border border-royalGold-500/30">
+        &times;
+      </button>
+
+      <div class="text-center mb-6">
+        <span class="text-[10px] font-mono uppercase tracking-[0.25em] text-royalGold-400">Official Access Pass</span>
+        <h3 class="font-serifLuxury text-2xl sm:text-3xl font-bold text-white mt-1">
+          You're Officially Registered!
+        </h3>
+        <p class="text-xs text-amber-200/70 mt-1">
+          Present this pass or QR code upon arrival at the venue gate.
+        </p>
+      </div>
+
+      <!-- Luxury Ticket Card Preview -->
+      <div id="ticketCardPreview" class="bg-gradient-to-br from-royalEmerald-900 to-royalEmerald-950 border border-royalGold-500/50 rounded-2xl p-6 relative overflow-hidden shadow-inner mb-6">
+        
+        <div class="flex items-center justify-between pb-4 border-b border-royalGold-500/20">
+          <div>
+            <span class="text-[10px] uppercase tracking-wider text-royalGold-400 font-mono">VIP GUEST</span>
+            <h4 id="ticketGuestName" class="font-serifLuxury text-xl font-bold text-white">Guest Name</h4>
+          </div>
+          <div class="text-right">
+            <span id="ticketNumber" class="font-mono text-sm font-bold text-royalGold-300">#MZ-2026-0000</span>
+            <span id="ticketGuestCount" class="block text-[11px] text-amber-200/70">1 Admission</span>
+          </div>
+        </div>
+
+        <div class="py-4 grid grid-cols-2 gap-4 text-xs">
+          <div>
+            <span class="text-amber-400/60 block font-mono text-[10px]">DATE</span>
+            <span id="ticketDate" class="text-white font-semibold">Saturday, Nov 14, 2026</span>
+          </div>
+          <div>
+            <span class="text-amber-400/60 block font-mono text-[10px]">BANQUET MEAL</span>
+            <span id="ticketMeal" class="text-white font-semibold truncate block">Jollof Feast</span>
+          </div>
+          <div class="col-span-2">
+            <span class="text-amber-400/60 block font-mono text-[10px]">VENUE</span>
+            <span id="ticketVenue" class="text-white font-semibold">The Imperial Ballroom, Victoria Island</span>
+          </div>
+        </div>
+
+        <!-- QR Code Area -->
+        <div class="pt-4 border-t border-royalGold-500/20 flex flex-col items-center justify-center">
+          <div id="ticketQRCode" class="bg-amber-50 p-3 rounded-xl border border-royalGold-500/40 shadow-md"></div>
+          <span class="text-[10px] font-mono text-royalGold-400/80 mt-2">Verification QR • Single Entry</span>
+        </div>
+
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex flex-col sm:flex-row items-center gap-3">
+        <button id="downloadPassBtn" class="w-full sm:flex-1 gold-btn py-3 rounded-xl text-xs uppercase tracking-wider font-bold shadow-lg flex items-center justify-center space-x-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+          <span>Download Pass (PNG)</span>
+        </button>
+
+        <a id="shareWhatsAppBtn" target="_blank" class="w-full sm:flex-1 gold-outline-btn py-3 rounded-xl text-xs uppercase tracking-wider font-semibold text-center flex items-center justify-center space-x-2">
+          <span>Share to WhatsApp</span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PHOTO LIGHTBOX MODAL -->
+  <div id="lightboxModal" class="fixed inset-0 z-50 bg-black/95 hidden items-center justify-center p-4">
+    <button id="lightboxClose" class="absolute top-6 right-6 text-white hover:text-royalGold-400 text-3xl font-light z-10">
+      &times;
+    </button>
+    <button id="lightboxPrev" class="absolute left-4 sm:left-8 text-white hover:text-royalGold-400 p-2 z-10 bg-royalEmerald-950/60 rounded-full border border-royalGold-500/30">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+    </button>
+    <button id="lightboxNext" class="absolute right-4 sm:right-8 text-white hover:text-royalGold-400 p-2 z-10 bg-royalEmerald-950/60 rounded-full border border-royalGold-500/30">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+    </button>
+
+    <div class="max-w-4xl max-h-[85vh] flex flex-col items-center">
+      <img id="lightboxImg" src="" alt="Wedding Portrait" class="max-h-[75vh] w-auto rounded-2xl shadow-2xl border border-royalGold-500/30 object-contain">
+      <div class="mt-4 text-center">
+        <h4 id="lightboxTitle" class="font-serifLuxury text-xl font-bold text-white"></h4>
+        <p id="lightboxDesc" class="text-sm text-amber-200/70 font-sans"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ORGANIZER / ADMIN PORTAL MODAL -->
+  <div id="adminModal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden items-center justify-center p-4">
+    <div class="bg-white text-gray-900 rounded-3xl max-w-4xl w-full p-6 sm:p-8 relative shadow-2xl max-h-[90vh] overflow-y-auto">
+      
+      <!-- Close button -->
+      <button id="adminCloseBtn" class="absolute top-5 right-5 text-gray-400 hover:text-gray-700 text-2xl w-8 h-8 rounded-full flex items-center justify-center bg-gray-100">
+        &times;
+      </button>
+
+      <!-- Step 1: Passcode Login View -->
+      <div id="adminLoginView" class="py-12 max-w-sm mx-auto text-center">
+        <div class="w-14 h-14 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center mx-auto mb-4">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+        </div>
+        <h3 class="font-serifLuxury text-2xl font-bold text-gray-900 mb-2">Couple / Planner Portal</h3>
+        <p class="text-xs text-gray-500 mb-6">Enter passcode to view guest registrations, meal totals, and export data.</p>
+        <div class="space-y-3">
+          <input type="password" id="adminPassInput" placeholder="Enter Passcode (Default: 2026)" class="w-full px-4 py-3 rounded-xl border border-gray-300 text-sm focus:border-emerald-600 focus:outline-none">
+          <button id="adminUnlockBtn" class="w-full bg-emerald-800 hover:bg-emerald-900 text-white font-bold py-3 rounded-xl text-sm transition">
+            Unlock Dashboard
+          </button>
+          <p class="text-[11px] text-gray-400">Passcode hint: <strong>2026</strong></p>
+        </div>
+      </div>
+
+      <!-- Step 2: Content View -->
+      <div id="adminContentView" class="hidden">
+        
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-gray-200 mb-6 gap-4">
+          <div>
+            <h3 class="font-serifLuxury text-2xl font-bold text-gray-900">Wedding Guest Coordination</h3>
+            <p class="text-xs text-gray-500">Live RSVP tracking and attendee headcount for caterers and security</p>
+          </div>
+          <div class="flex items-center space-x-3">
+            <button id="exportCsvBtn" class="bg-emerald-800 hover:bg-emerald-900 text-white text-xs font-semibold px-4 py-2.5 rounded-xl shadow flex items-center space-x-2">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+              <span>Export CSV (Excel)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Metric Cards -->
+        <div class="grid grid-cols-3 gap-4 mb-8">
+          <div class="bg-emerald-50 border border-emerald-200 p-4 rounded-2xl text-center">
+            <span class="text-xs font-bold text-emerald-800 uppercase tracking-wider block">Total RSVPs</span>
+            <span id="statTotalRegistrations" class="font-serifLuxury text-3xl font-bold text-emerald-950 mt-1 block">0</span>
+          </div>
+
+          <div class="bg-amber-50 border border-amber-200 p-4 rounded-2xl text-center">
+            <span class="text-xs font-bold text-amber-800 uppercase tracking-wider block">Attending Headcount</span>
+            <span id="statTotalHeadcount" class="font-serifLuxury text-3xl font-bold text-amber-950 mt-1 block">0</span>
+          </div>
+
+          <div class="bg-rose-50 border border-rose-200 p-4 rounded-2xl text-center">
+            <span class="text-xs font-bold text-rose-800 uppercase tracking-wider block">Declined</span>
+            <span id="statDeclined" class="font-serifLuxury text-3xl font-bold text-rose-950 mt-1 block">0</span>
+          </div>
+        </div>
+
+        <!-- Search & Filter Controls -->
+        <div class="flex flex-col sm:flex-row gap-3 mb-4">
+          <input type="text" id="guestSearchInput" placeholder="Search guests by name, email or ticket ID..." class="flex-1 px-4 py-2.5 rounded-xl border border-gray-300 text-xs focus:outline-none focus:border-emerald-600">
+          <select id="guestFilterStatus" class="px-4 py-2.5 rounded-xl border border-gray-300 text-xs focus:outline-none focus:border-emerald-600">
+            <option value="all">All Registrations</option>
+            <option value="yes">Attending Only</option>
+            <option value="no">Declined Only</option>
+          </select>
+        </div>
+
+        <!-- Guests Data Table -->
+        <div class="overflow-x-auto border border-gray-200 rounded-2xl mb-8">
+          <table class="w-full text-left text-xs text-gray-700">
+            <thead class="bg-gray-50 border-b border-gray-200 text-gray-500 uppercase tracking-wider text-[10px]">
+              <tr>
+                <th class="px-4 py-3">Pass ID</th>
+                <th class="px-4 py-3">Guest / Plus-Ones</th>
+                <th class="px-4 py-3">Status</th>
+                <th class="px-4 py-3">Meal Selection</th>
+                <th class="px-4 py-3">Message / Song</th>
+                <th class="px-4 py-3 text-right">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="adminGuestsTableBody">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Wedding Quick Customization Tab -->
+        <div class="bg-gray-50 p-6 rounded-2xl border border-gray-200">
+          <h4 class="font-bold text-sm text-gray-900 mb-3">Quick Edit Wedding Info</h4>
+          <form id="weddingSettingsForm" class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+            <div>
+              <label class="block font-semibold mb-1">Groom's Name</label>
+              <input type="text" id="editGroom" class="w-full px-3 py-2 rounded-lg border border-gray-300">
+            </div>
+            <div>
+              <label class="block font-semibold mb-1">Bride's Name</label>
+              <input type="text" id="editBride" class="w-full px-3 py-2 rounded-lg border border-gray-300">
+            </div>
+            <div>
+              <label class="block font-semibold mb-1">Wedding Hashtag</label>
+              <input type="text" id="editHashtag" class="w-full px-3 py-2 rounded-lg border border-gray-300">
+            </div>
+            <div>
+              <label class="block font-semibold mb-1">Couple Tagline</label>
+              <input type="text" id="editTagline" class="w-full px-3 py-2 rounded-lg border border-gray-300">
+            </div>
+            <div>
+              <label class="block font-semibold mb-1">Bank Name</label>
+              <input type="text" id="editBankName" class="w-full px-3 py-2 rounded-lg border border-gray-300">
+            </div>
+            <div>
+              <label class="block font-semibold mb-1">Bank Account Number</label>
+              <input type="text" id="editAccountNo" class="w-full px-3 py-2 rounded-lg border border-gray-300">
+            </div>
+            <div class="col-span-full pt-2">
+              <button type="submit" class="bg-emerald-800 text-white font-bold px-5 py-2.5 rounded-xl hover:bg-emerald-900 transition">
+                Save & Update Wedding Site
+              </button>
+            </div>
+          </form>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Main Application Script -->
+  <script src="app.js"></script>
+</body>
+</html>

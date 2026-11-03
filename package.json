@@ -1,0 +1,19 @@
+{
+  "name": "wedding-e-invite-registration",
+  "version": "1.0.0",
+  "description": "Luxury Wedding E-Invite, RSVP, and VIP Digital Pass Application",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "serve": "node server.js"
+  },
+  "keywords": [
+    "wedding",
+    "e-invite",
+    "rsvp",
+    "registration",
+    "luxury-invitation"
+  ],
+  "author": "Mubaraq",
+  "license": "MIT"
+}
