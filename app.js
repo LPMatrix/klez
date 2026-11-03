@@ -6,32 +6,32 @@
 // Default Configuration State
 const DEFAULT_CONFIG = {
   groom: "Emmanuel",
-  bride: "Faith",
+  bride: "Haliyah",
   weddingDate: "2026-11-14T10:00:00",
-  hashtag: "#FaithfullyEmmanuel2026",
+  hashtag: "#EmmanuelAndHaliyah2026",
   tagline: "Two Souls, One Divine Covenant in Christ",
   bank: {
-    accountName: "Emmanuel & Faith Wedding Fund",
+    accountName: "Emmanuel & Haliyah Wedding Fund",
     bankName: "Guaranty Trust Bank (GTBank)",
     accountNumber: "0789456123",
     sortCode: "058"
   },
   venues: {
-    solemnization: {
-      title: "Holy Matrimony & Church Blessing",
-      time: "10:00 AM - 1:00 PM",
+    engagement: {
+      title: "Traditional Engagement Ceremony",
+      time: "10:00 AM",
       dateFormatted: "Saturday, November 14, 2026",
-      location: "The Grand Emerald Chapel, Landmark Centre, Victoria Island, Lagos",
-      mapsQuery: "Landmark Centre, Water Corporation Drive, Victoria Island, Lagos",
-      dressCode: "Emerald Green & Champagne Gold (Aso Ebi Glamour)"
+      location: "Blessing Hall, Eko Club, Bode Thomas, Surulere, Lagos",
+      mapsQuery: "Eko Club, Bode Thomas Street, Surulere, Lagos",
+      dressCode: "Emerald Green & Champagne Gold (Traditional Glamour)"
     },
-    reception: {
-      title: "The Royal Banquet & Evening Celebration",
-      time: "2:00 PM - 8:00 PM",
+    whiteWedding: {
+      title: "White Wedding & Holy Matrimony",
+      time: "12:00 PM",
       dateFormatted: "Saturday, November 14, 2026",
-      location: "The Imperial Ballroom, Eko Hotel & Suites, Victoria Island, Lagos",
-      mapsQuery: "Eko Hotel and Suites, Adetokunbo Ademola Street, Lagos",
-      dressCode: "Black Tie / Royal Traditional Elegance"
+      location: "Blessing Hall, Eko Club, Bode Thomas, Surulere, Lagos",
+      mapsQuery: "Eko Club, Bode Thomas Street, Surulere, Lagos",
+      dressCode: "Formal Elegance / Black Tie & Champagne Gold Accents"
     }
   }
 };
@@ -41,14 +41,14 @@ const DEFAULT_WISHES = [
   {
     id: "wish-1",
     name: "Pastor & Mrs. Adebayo",
-    message: "May your marriage be anchored on the Rock of Ages, blessed with enduring peace, fruitfulness, and divine joy. Congratulations to our beloved couple!",
+    message: "May your marriage be anchored on the Rock of Ages, blessed with enduring peace, fruitfulness, and divine joy. Congratulations to Emmanuel & Haliyah!",
     date: "Nov 3, 2026",
     likes: 18
   },
   {
     id: "wish-2",
     name: "Folashade Balogun",
-    message: "Watching God unfold your love story has been pure joy! Faith, you are an angelic bride, and Emmanuel, you found your good thing. Can't wait to dance till morning!",
+    message: "Watching God unfold your love story has been pure joy! Haliyah, you are an angelic bride, and Emmanuel, you found your good thing. Can't wait to dance till morning!",
     date: "Nov 3, 2026",
     likes: 24
   },
@@ -103,7 +103,7 @@ class WeddingApp {
     try {
       const parsed = JSON.parse(saved);
       // Migrate from old placeholder if present
-      if (parsed.bride === "Zainab" || parsed.groom === "Mubaraq") {
+      if (parsed.bride !== "Haliyah" || parsed.groom !== "Emmanuel") {
         localStorage.setItem('wedding_config', JSON.stringify(DEFAULT_CONFIG));
         return DEFAULT_CONFIG;
       }
@@ -170,7 +170,7 @@ class WeddingApp {
     if (!saved) return DEFAULT_WISHES;
     try {
       const parsed = JSON.parse(saved);
-      if (Array.isArray(parsed) && parsed.some(w => (w.message && (w.message.includes("Zainab") || w.message.includes("Allah"))))) {
+      if (Array.isArray(parsed) && parsed.some(w => (w.message && (w.message.includes("Mubaraq") || w.message.includes("Faith") || w.message.includes("Zainab") || w.message.includes("Allah"))))) {
         localStorage.setItem('wedding_wishes', JSON.stringify(DEFAULT_WISHES));
         return DEFAULT_WISHES;
       }
@@ -575,7 +575,7 @@ class WeddingApp {
     document.getElementById('ticketGuestCount').textContent = `${guest.guestsCount} ${guest.guestsCount > 1 ? 'Admissions' : 'Admission'}`;
     document.getElementById('ticketMeal').textContent = guest.meal;
     document.getElementById('ticketDate').textContent = "Saturday, November 14, 2026";
-    document.getElementById('ticketVenue').textContent = "The Imperial Ballroom, Lagos";
+    document.getElementById('ticketVenue').textContent = "Blessing Hall, Eko Club, Surulere";
 
     // Generate QR Code
     const qrContainer = document.getElementById('ticketQRCode');
@@ -730,8 +730,8 @@ class WeddingApp {
 
     renderField("DATE", "Saturday, Nov 14, 2026", 90, 420);
     renderField("ADMISSIONS", `${guest.guestsCount} Guest(s)`, 380, 420);
-    renderField("VENUE", "Imperial Ballroom, Victoria Island", 90, 510);
-    renderField("DRESS CODE", "Emerald Green & Champagne Gold", 380, 510);
+    renderField("VENUE", "Blessing Hall, Eko Club, Surulere", 90, 510);
+    renderField("SCHEDULE", "10:00 AM (Eng.) • 12:00 PM (White)", 380, 510);
 
     // Right Column: Perforated Tear-off Ticket Stub
     ctx.setLineDash([8, 8]);
@@ -881,8 +881,8 @@ class WeddingApp {
         const start = "20261114T090000Z";
         const end = "20261114T200000Z";
         const title = encodeURIComponent(`The Wedding of ${this.config.groom} & ${this.config.bride}`);
-        const details = encodeURIComponent(`Join us in celebrating the holy matrimony and royal union of ${this.config.groom} & ${this.config.bride}.\nDress Code: Emerald Green & Champagne Gold.\nHashtag: ${this.config.hashtag}`);
-        const location = encodeURIComponent("The Imperial Ballroom, Victoria Island, Lagos");
+        const details = encodeURIComponent(`Join us in celebrating the wedding of ${this.config.groom} & ${this.config.bride}.\nSchedule: Traditional Engagement at 10:00 AM, White Wedding at 12:00 PM, Reception to follow.\nVenue: Blessing Hall, Eko Club, Bode Thomas, Surulere, Lagos.\nDress Code: Emerald Green & Champagne Gold.\nHashtag: ${this.config.hashtag}`);
+        const location = encodeURIComponent("Blessing Hall, Eko Club, Bode Thomas, Surulere, Lagos");
         const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${start}/${end}&details=${details}&location=${location}`;
         window.open(url, '_blank');
       });
@@ -894,13 +894,13 @@ class WeddingApp {
         const icsData = [
           'BEGIN:VCALENDAR',
           'VERSION:2.0',
-          'PRODID:-//Emmanuel and Faith Wedding//EN',
+          'PRODID:-//Emmanuel and Haliyah Wedding//EN',
           'CALSCALE:GREGORIAN',
           'METHOD:PUBLISH',
           'BEGIN:VEVENT',
           'SUMMARY:The Wedding of ' + this.config.groom + ' & ' + this.config.bride,
-          'DESCRIPTION:Join us for the joyous union of ' + this.config.groom + ' & ' + this.config.bride + '. Dress Code: Emerald Green & Champagne Gold.',
-          'LOCATION:The Imperial Ballroom, Victoria Island, Lagos',
+          'DESCRIPTION:Join us for the union of ' + this.config.groom + ' & ' + this.config.bride + '. Engagement: 10:00 AM | White Wedding: 12:00 PM. Venue: Blessing Hall, Eko Club, Bode Thomas, Surulere, Lagos.',
+          'LOCATION:Blessing Hall, Eko Club, Bode Thomas, Surulere, Lagos',
           'DTSTART:20261114T090000Z',
           'DTEND:20261114T200000Z',
           'STATUS:CONFIRMED',
@@ -978,16 +978,16 @@ class WeddingApp {
 
     if (adminCloseBtn) adminCloseBtn.addEventListener('click', closeAdmin);
 
-    // Passcode Unlock (default: "2026" or click demo unlock)
+    // Passcode Unlock
     const unlockDashboard = () => {
       const pass = adminPassInput.value.trim();
-      if (pass === '2026' || pass === 'admin' || pass === '') {
+      if (pass === '2026' || pass === 'admin') {
         adminLoginView.classList.add('hidden');
         adminContentView.classList.remove('hidden');
         this.refreshAdminStats();
         this.renderGuestTable();
       } else {
-        this.showToast("Incorrect passcode. Hint: Use 2026", "error");
+        this.showToast("Incorrect passcode. Access denied.", "error");
       }
     };
 

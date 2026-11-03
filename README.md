@@ -1,6 +1,6 @@
 # 👑 The Royal Wedding E-Invite & Guest Registration System
 
-A luxury, interactive e-invitation and guest registration web application created for the wedding celebration on **Saturday, November 14, 2026** in Victoria Island, Lagos.
+A luxury, interactive e-invitation and guest registration web application created for the wedding celebration of **Emmanuel & Haliyah** on **Saturday, November 14, 2026** at **Blessing Hall, Eko Club, Bode Thomas, Surulere, Lagos**.
 
 Designed with a regal palette of **Emerald Green, Champagne Gold, Mustard Sun, and Ivory Silk**, celebrating the rich heritage, cultural elegance, and modern haute couture of the couple.
 
@@ -11,7 +11,7 @@ Designed with a regal palette of **Emerald Green, Champagne Gold, Mustard Sun, a
 1. **Ethereal Hero & Dynamic Countdown**:
    - Live countdown timer down to the second for **November 14, 2026**.
    - Romantic typography (*Playfair Display*, *Cormorant Garamond*, and *Alex Brush*).
-   - Monogram crest and celebratory blessings.
+   - Monogram crest (**E & H**) and celebratory blessings.
 
 2. **Ambient Wedding Melody**:
    - Built-in Web Audio API romantic harp & string arpeggio synthesizer with play/pause and animated audio wave indicators.
@@ -26,8 +26,8 @@ Designed with a regal palette of **Emerald Green, Champagne Gold, Mustard Sun, a
    - Full-screen interactive lightbox modal with keyboard navigation.
 
 4. **Event Details & Itinerary**:
-   - **Part I: Holy Matrimony & Church Blessing** (Morning, Landmark Centre)
-   - **Part II: The Royal Banquet & Grand Reception** (Evening, Eko Hotel & Suites)
+   - **Part I: Traditional Engagement Ceremony** (10:00 AM, Blessing Hall, Eko Club, Surulere)
+   - **Part II: White Wedding & Grand Reception** (12:00 PM, Blessing Hall, Eko Club, Surulere)
    - Direct Google Maps links and venue details.
    - One-click **Save to Google Calendar** and **Download Apple / Outlook (.ics)** file.
 
@@ -112,5 +112,7 @@ Then visit: **http://localhost:3000** in your browser.
 
 ## 💍 Customization Notes
 - **Admin Passcode**: `2026`
-- **Default Names**: *Emmanuel & Faith* (Can be changed in the Admin Portal or in `app.js` under `DEFAULT_CONFIG`)
+- **Default Names**: *Emmanuel & Haliyah*
+- **Venue**: Blessing Hall, Eko Club, Bode Thomas, Surulere, Lagos
+- **Schedule**: Engagement: 10:00 AM | White Wedding: 12:00 PM | Reception to follow
 - **Date**: Saturday, November 14, 2026
