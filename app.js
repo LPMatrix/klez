@@ -5,23 +5,23 @@
 
 // Default Configuration State
 const DEFAULT_CONFIG = {
-  groom: "Mubaraq",
-  bride: "Zainab",
+  groom: "Emmanuel",
+  bride: "Faith",
   weddingDate: "2026-11-14T10:00:00",
-  hashtag: "#MubaraqAndZainab2026",
-  tagline: "Two Souls, One Divine Journey of Eternal Love",
+  hashtag: "#FaithfullyEmmanuel2026",
+  tagline: "Two Souls, One Divine Covenant in Christ",
   bank: {
-    accountName: "Mubaraq & Zainab Wedding Fund",
+    accountName: "Emmanuel & Faith Wedding Fund",
     bankName: "Guaranty Trust Bank (GTBank)",
     accountNumber: "0789456123",
     sortCode: "058"
   },
   venues: {
     solemnization: {
-      title: "Traditional Engagement & Nikkah Solemnization",
+      title: "Holy Matrimony & Church Blessing",
       time: "10:00 AM - 1:00 PM",
       dateFormatted: "Saturday, November 14, 2026",
-      location: "The Grand Emerald Hall, Landmark Centre, Victoria Island, Lagos",
+      location: "The Grand Emerald Chapel, Landmark Centre, Victoria Island, Lagos",
       mapsQuery: "Landmark Centre, Water Corporation Drive, Victoria Island, Lagos",
       dressCode: "Emerald Green & Champagne Gold (Aso Ebi Glamour)"
     },
@@ -40,22 +40,22 @@ const DEFAULT_CONFIG = {
 const DEFAULT_WISHES = [
   {
     id: "wish-1",
-    name: "Dr. & Mrs. Adeleke",
-    message: "May your home be blessed with perpetual peace, abundant laughter, and boundless prosperity. Congratulations to our favorite couple!",
+    name: "Pastor & Mrs. Adebayo",
+    message: "May your marriage be anchored on the Rock of Ages, blessed with enduring peace, fruitfulness, and divine joy. Congratulations to our beloved couple!",
     date: "Nov 3, 2026",
     likes: 18
   },
   {
     id: "wish-2",
     name: "Folashade Balogun",
-    message: "Watching both of you grow together has been pure magic! Zainab, you are stunning, and Mubaraq, you found your jewel. Can't wait to dance till morning!",
+    message: "Watching God unfold your love story has been pure joy! Faith, you are an angelic bride, and Emmanuel, you found your good thing. Can't wait to dance till morning!",
     date: "Nov 3, 2026",
     likes: 24
   },
   {
     id: "wish-3",
     name: "Tunde & Amanda Johnson",
-    message: "Wishing you a lifetime of joy, deep companionship, and unending love. Beautiful photos! See you on the dance floor!",
+    message: "Wishing you a lifetime of laughter, deep companionship, and unending grace. Beautiful portraits! See you on the dance floor!",
     date: "Nov 2, 2026",
     likes: 12
   }
@@ -99,7 +99,18 @@ class WeddingApp {
 
   loadConfig() {
     const saved = localStorage.getItem('wedding_config');
-    return saved ? JSON.parse(saved) : DEFAULT_CONFIG;
+    if (!saved) return DEFAULT_CONFIG;
+    try {
+      const parsed = JSON.parse(saved);
+      // Migrate from old placeholder if present
+      if (parsed.bride === "Zainab" || parsed.groom === "Mubaraq") {
+        localStorage.setItem('wedding_config', JSON.stringify(DEFAULT_CONFIG));
+        return DEFAULT_CONFIG;
+      }
+      return parsed;
+    } catch (e) {
+      return DEFAULT_CONFIG;
+    }
   }
 
   saveConfig() {
@@ -133,16 +144,16 @@ class WeddingApp {
       },
       {
         id: "TKT-7619",
-        name: "Amina Yusuf",
-        email: "amina.yusuf@example.com",
+        name: "Grace Adeyemi",
+        email: "grace.adeyemi@example.com",
         phone: "+234 812 987 6543",
         attending: "yes",
         guestsCount: 1,
         plusOneNames: "",
         meal: "Jollof & Fried Rice Platter with Crispy Chicken",
-        dietary: "Halal only",
-        songRequest: "Essence by Wizkid feat. Tems",
-        message: "So thrilled for you both! Allah bless your union.",
+        dietary: "None",
+        songRequest: "Olorun Agbaye by Nathaniel Bassey",
+        message: "So thrilled for you both! May God bless your marriage with divine joy and fruitfulness.",
         registeredAt: "2026-11-03T19:10:00Z"
       }
     ];
@@ -156,7 +167,17 @@ class WeddingApp {
 
   loadWishes() {
     const saved = localStorage.getItem('wedding_wishes');
-    return saved ? JSON.parse(saved) : DEFAULT_WISHES;
+    if (!saved) return DEFAULT_WISHES;
+    try {
+      const parsed = JSON.parse(saved);
+      if (Array.isArray(parsed) && parsed.some(w => (w.message && (w.message.includes("Zainab") || w.message.includes("Allah"))))) {
+        localStorage.setItem('wedding_wishes', JSON.stringify(DEFAULT_WISHES));
+        return DEFAULT_WISHES;
+      }
+      return parsed;
+    } catch (e) {
+      return DEFAULT_WISHES;
+    }
   }
 
   saveWishes() {
@@ -564,7 +585,7 @@ class WeddingApp {
       ticketId: guest.id,
       guest: guest.name,
       partySize: guest.guestsCount,
-      event: "Mubaraq & Zainab Royal Wedding",
+      event: `${this.config.groom} & ${this.config.bride} Royal Wedding`,
       date: "2026-11-14",
       status: "VERIFIED_VIP"
     });
@@ -873,7 +894,7 @@ class WeddingApp {
         const icsData = [
           'BEGIN:VCALENDAR',
           'VERSION:2.0',
-          'PRODID:-//Mubaraq and Zainab Wedding//EN',
+          'PRODID:-//Emmanuel and Faith Wedding//EN',
           'CALSCALE:GREGORIAN',
           'METHOD:PUBLISH',
           'BEGIN:VEVENT',

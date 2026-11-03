@@ -4,6 +4,7 @@
   "description": "Luxury Wedding E-Invite, RSVP, and VIP Digital Pass Application",
   "main": "server.js",
   "scripts": {
+    "build": "echo 'Static site ready for Vercel deployment'",
     "start": "node server.js",
     "serve": "node server.js"
   },

@@ -26,7 +26,7 @@ Designed with a regal palette of **Emerald Green, Champagne Gold, Mustard Sun, a
    - Full-screen interactive lightbox modal with keyboard navigation.
 
 4. **Event Details & Itinerary**:
-   - **Part I: Traditional Engagement & Nikkah Solemnization** (Morning, Landmark Centre)
+   - **Part I: Holy Matrimony & Church Blessing** (Morning, Landmark Centre)
    - **Part II: The Royal Banquet & Grand Reception** (Evening, Eko Hotel & Suites)
    - Direct Google Maps links and venue details.
    - One-click **Save to Google Calendar** and **Download Apple / Outlook (.ics)** file.
@@ -112,5 +112,5 @@ Then visit: **http://localhost:3000** in your browser.
 
 ## 💍 Customization Notes
 - **Admin Passcode**: `2026`
-- **Default Names**: *Mubaraq & Zainab* (Can be changed in the Admin Portal or in `app.js` under `DEFAULT_CONFIG`)
+- **Default Names**: *Emmanuel & Faith* (Can be changed in the Admin Portal or in `app.js` under `DEFAULT_CONFIG`)
 - **Date**: Saturday, November 14, 2026
