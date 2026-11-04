@@ -100,10 +100,14 @@
 
       <!-- Action Controls: Music + RSVP Button -->
       <div class="flex items-center space-x-3">
-        <!-- Ambient Music Toggle -->
-        <button id="audioToggleBtn" title="Toggle Wedding Melody" class="flex items-center space-x-2 px-3.5 py-2 rounded-full bg-royalEmerald-900/80 text-royalGold-300 border border-royalGold-500/30 text-xs hover:border-royalGold-400 transition shadow-sm">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"/></svg>
-          <span id="audioStatusText" class="hidden sm:inline font-mono text-[11px]">Play Music</span>
+        <!-- Romantic Love Song Audio Player -->
+        <audio id="weddingAudio" loop preload="auto">
+          <source src="assets/audio/wedding-love-song.mp3" type="audio/mpeg">
+          <source src="assets/audio/wedding-love-song.m4a" type="audio/mp4">
+        </audio>
+        <button id="audioToggleBtn" title="Play Wedding Love Song: Johnny Drille - Count on You" class="flex items-center space-x-2 px-3.5 py-2 rounded-full bg-royalEmerald-900/80 text-royalGold-300 border border-royalGold-500/30 text-xs hover:border-royalGold-400 transition shadow-sm">
+          <svg class="w-4 h-4 text-rose-400 fill-current" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+          <span id="audioStatusText" class="hidden sm:inline font-mono text-[11px]">Play Love Song</span>
           <div id="audioWaves" class="flex items-end space-x-0.5 h-3 opacity-40">
             <span class="w-0.5 h-1.5 bg-royalGold-400 animate-pulse"></span>
             <span class="w-0.5 h-3 bg-royalGold-400 animate-pulse delay-75"></span>
@@ -648,33 +652,17 @@
           <!-- ATTENDING CONDITIONAL DETAILS -->
           <div id="attendingDetailsFields" class="space-y-6 pt-2">
             
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-              <!-- Guest Count -->
-              <div>
-                <label for="guestCount" class="block text-xs font-mono uppercase tracking-wider text-royalGold-300 mb-2">
-                  Number of Attendees
-                </label>
-                <select id="guestCount" class="w-full px-4 py-3 rounded-xl bg-royalEmerald-950/80 border border-royalGold-500/30 text-white focus:border-royalGold-400 focus:outline-none focus:ring-1 focus:ring-royalGold-400 transition text-sm">
-                  <option value="1">1 Guest (Self only)</option>
-                  <option value="2">2 Guests (Couple / +1)</option>
-                  <option value="3">3 Guests (Family)</option>
-                  <option value="4">4 Guests (Family)</option>
-                </select>
-              </div>
-
-              <!-- Meal Preference -->
-              <div>
-                <label for="mealPreference" class="block text-xs font-mono uppercase tracking-wider text-royalGold-300 mb-2">
-                  Banquet Meal Choice
-                </label>
-                <select id="mealPreference" class="w-full px-4 py-3 rounded-xl bg-royalEmerald-950/80 border border-royalGold-500/30 text-white focus:border-royalGold-400 focus:outline-none focus:ring-1 focus:ring-royalGold-400 transition text-sm">
-                  <option value="Jollof & Fried Rice with Crispy Chicken & Asun">Royal Jollof & Fried Rice with Crispy Chicken & Asun</option>
-                  <option value="Traditional Pounded Yam & Egusi with Assorted Meat">Pounded Yam & Egusi with Assorted Goat Meat & Fish</option>
-                  <option value="Grilled Croaker Fish with Fried Plantains & Yam Chips">Grilled Croaker Fish with Dodo & Yam Chips</option>
-                  <option value="Seafood Pasta & Lobster Special">Seafood Pasta & Jumbo Prawns</option>
-                  <option value="Chef's Vegan / Vegetarian Garden Platter">Chef's Vegan / Vegetarian Platter</option>
-                </select>
-              </div>
+            <!-- Guest Count -->
+            <div>
+              <label for="guestCount" class="block text-xs font-mono uppercase tracking-wider text-royalGold-300 mb-2">
+                Number of Attendees
+              </label>
+              <select id="guestCount" class="w-full px-4 py-3 rounded-xl bg-royalEmerald-950/80 border border-royalGold-500/30 text-white focus:border-royalGold-400 focus:outline-none focus:ring-1 focus:ring-royalGold-400 transition text-sm">
+                <option value="1">1 Guest (Self only)</option>
+                <option value="2">2 Guests (Couple / +1)</option>
+                <option value="3">3 Guests (Family / Group)</option>
+                <option value="4">4 Guests (Family / Group)</option>
+              </select>
             </div>
 
             <!-- Plus-One Names Container -->
@@ -682,25 +670,7 @@
               <label for="plusOneNames" class="block text-xs font-mono uppercase tracking-wider text-royalGold-300 mb-2">
                 Name of Accompanying Guest(s)
               </label>
-              <input type="text" id="plusOneNames" placeholder="e.g. Mrs. Folashade Ogunlesi" class="w-full px-4 py-3 rounded-xl bg-royalEmerald-950/80 border border-royalGold-500/30 text-white placeholder-amber-200/30 focus:border-royalGold-400 focus:outline-none text-sm">
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-              <!-- Dietary Restrictions -->
-              <div>
-                <label for="dietaryNotes" class="block text-xs font-mono uppercase tracking-wider text-royalGold-300 mb-2">
-                  Allergies / Dietary Restrictions
-                </label>
-                <input type="text" id="dietaryNotes" placeholder="e.g. Shellfish allergy, Vegetarian" class="w-full px-4 py-3 rounded-xl bg-royalEmerald-950/80 border border-royalGold-500/30 text-white placeholder-amber-200/30 focus:border-royalGold-400 focus:outline-none text-sm">
-              </div>
-
-              <!-- Song Request -->
-              <div>
-                <label for="songRequest" class="block text-xs font-mono uppercase tracking-wider text-royalGold-300 mb-2">
-                  Song Request for the DJ 🎶
-                </label>
-                <input type="text" id="songRequest" placeholder="e.g. Asake - Lonely at the Top" class="w-full px-4 py-3 rounded-xl bg-royalEmerald-950/80 border border-royalGold-500/30 text-white placeholder-amber-200/30 focus:border-royalGold-400 focus:outline-none text-sm">
-              </div>
+              <input type="text" id="plusOneNames" placeholder="e.g. Mrs. Folashade Adeleke" class="w-full px-4 py-3 rounded-xl bg-royalEmerald-950/80 border border-royalGold-500/30 text-white placeholder-amber-200/30 focus:border-royalGold-400 focus:outline-none text-sm">
             </div>
 
           </div>
@@ -884,8 +854,8 @@
             <span id="ticketDate" class="text-white font-semibold">Saturday, Nov 14, 2026</span>
           </div>
           <div>
-            <span class="text-amber-400/60 block font-mono text-[10px]">BANQUET MEAL</span>
-            <span id="ticketMeal" class="text-white font-semibold truncate block">Jollof Feast</span>
+            <span class="text-amber-400/60 block font-mono text-[10px]">TIME</span>
+            <span class="text-white font-semibold">10:00 AM (Eng.) • 12:00 PM (White)</span>
           </div>
           <div class="col-span-2">
             <span class="text-amber-400/60 block font-mono text-[10px]">VENUE</span>
@@ -1013,8 +983,7 @@
                 <th class="px-4 py-3">Pass ID</th>
                 <th class="px-4 py-3">Guest / Plus-Ones</th>
                 <th class="px-4 py-3">Status</th>
-                <th class="px-4 py-3">Meal Selection</th>
-                <th class="px-4 py-3">Message / Song</th>
+                <th class="px-4 py-3">Message / Wishes</th>
                 <th class="px-4 py-3 text-right">Actions</th>
               </tr>
             </thead>

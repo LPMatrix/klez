@@ -136,9 +136,6 @@ class WeddingApp {
         attending: "yes",
         guestsCount: 2,
         plusOneNames: "Mrs. Funmilayo Alabi",
-        meal: "Traditional Pounded Yam & Egusi with Assorted Meat",
-        dietary: "No shellfish",
-        songRequest: "Buga by Kizz Daniel",
         message: "We will be there in our finest emerald green! Huge congratulations!",
         registeredAt: "2026-11-03T18:24:00Z"
       },
@@ -150,9 +147,6 @@ class WeddingApp {
         attending: "yes",
         guestsCount: 1,
         plusOneNames: "",
-        meal: "Jollof & Fried Rice Platter with Crispy Chicken",
-        dietary: "None",
-        songRequest: "Olorun Agbaye by Nathaniel Bassey",
         message: "So thrilled for you both! May God bless your marriage with divine joy and fruitfulness.",
         registeredAt: "2026-11-03T19:10:00Z"
       }
@@ -273,35 +267,27 @@ class WeddingApp {
     setInterval(updateTimer, 1000);
   }
 
-  // Romantic Web Audio Synthesizer: Ethereal harp & strings chords
+  // Romantic Wedding Love Song Player (Johnny Drille - Count on You)
   initAudioPlayer() {
     const toggleBtn = document.getElementById('audioToggleBtn');
     const audioStatusText = document.getElementById('audioStatusText');
     const audioWaves = document.getElementById('audioWaves');
+    const audioElement = document.getElementById('weddingAudio');
 
     if (!toggleBtn) return;
 
     toggleBtn.addEventListener('click', () => {
-      if (!this.audioContext) {
-        const AudioContext = window.AudioContext || window.webkitAudioContext;
-        this.audioContext = new AudioContext();
-      }
-
-      if (this.audioContext.state === 'suspended') {
-        this.audioContext.resume();
-      }
-
       if (this.isPlayingMusic) {
         this.stopMusic();
         toggleBtn.classList.remove('bg-amber-400', 'text-emerald-950');
-        toggleBtn.classList.add('bg-emerald-900/80', 'text-amber-300');
-        if (audioStatusText) audioStatusText.textContent = "Music Paused";
+        toggleBtn.classList.add('bg-royalEmerald-900/80', 'text-royalGold-300');
+        if (audioStatusText) audioStatusText.textContent = "Play Love Song";
         if (audioWaves) audioWaves.classList.add('opacity-40');
       } else {
         this.startMusic();
-        toggleBtn.classList.remove('bg-emerald-900/80', 'text-amber-300');
+        toggleBtn.classList.remove('bg-royalEmerald-900/80', 'text-royalGold-300');
         toggleBtn.classList.add('bg-amber-400', 'text-emerald-950');
-        if (audioStatusText) audioStatusText.textContent = "Playing Melody";
+        if (audioStatusText) audioStatusText.textContent = "Johnny Drille — Count on You";
         if (audioWaves) audioWaves.classList.remove('opacity-40');
       }
     });
@@ -311,62 +297,92 @@ class WeddingApp {
     if (this.isPlayingMusic) return;
     this.isPlayingMusic = true;
 
-    // Harmonic Wedding Chord Progression (Dmaj9 - F#m7 - Gmaj7 - A6/9 - Bm7)
-    const chords = [
-      [293.66, 369.99, 440.00, 554.37, 659.25], // D - F# - A - C# - E
-      [369.99, 440.00, 554.37, 739.99],         // F# - A - C# - F#
-      [392.00, 493.88, 587.33, 739.99],         // G - B - D - F#
-      [440.00, 554.37, 659.25, 830.61],         // A - C# - E - G#
-      [246.94, 293.66, 369.99, 440.00, 554.37]  // B - D - F# - A - C#
-    ];
-
-    let chordIndex = 0;
-
-    const playChordArpeggio = () => {
-      if (!this.isPlayingMusic || !this.audioContext) return;
-
-      const now = this.audioContext.currentTime;
-      const notes = chords[chordIndex];
-
-      // Play soft arpeggiated harp notes
-      notes.forEach((freq, i) => {
-        const osc = this.audioContext.createOscillator();
-        const gain = this.audioContext.createGain();
-        const filter = this.audioContext.createBiquadFilter();
-
-        // Warm mellow harp tone
-        osc.type = 'triangle';
-        osc.frequency.setValueAtTime(freq, now + i * 0.22);
-
-        filter.type = 'lowpass';
-        filter.frequency.setValueAtTime(1400, now);
-        filter.Q.setValueAtTime(2, now);
-
-        gain.gain.setValueAtTime(0.001, now + i * 0.22);
-        gain.gain.exponentialRampToValueAtTime(0.08, now + i * 0.22 + 0.05);
-        gain.gain.exponentialRampToValueAtTime(0.0001, now + i * 0.22 + 2.8);
-
-        osc.connect(filter);
-        filter.connect(gain);
-        gain.connect(this.audioContext.destination);
-
-        osc.start(now + i * 0.22);
-        osc.stop(now + i * 0.22 + 3.0);
+    const audioElement = document.getElementById('weddingAudio');
+    if (audioElement) {
+      audioElement.play().then(() => {
+        // Audio element playing successfully
+      }).catch(() => {
+        // Fallback to Web Audio synthesis if audio element autoplay/format blocked
+        this.startWebAudioFallback();
       });
-
-      chordIndex = (chordIndex + 1) % chords.length;
-      this.musicTimer = setTimeout(playChordArpeggio, 3600);
-    };
-
-    playChordArpeggio();
+    } else {
+      this.startWebAudioFallback();
+    }
   }
 
   stopMusic() {
     this.isPlayingMusic = false;
+    const audioElement = document.getElementById('weddingAudio');
+    if (audioElement) {
+      audioElement.pause();
+    }
     if (this.musicTimer) {
       clearTimeout(this.musicTimer);
       this.musicTimer = null;
     }
+  }
+
+  // Web Audio Fallback playing the love song melody
+  startWebAudioFallback() {
+    if (!this.audioContext) {
+      const AudioContext = window.AudioContext || window.webkitAudioContext;
+      this.audioContext = new AudioContext();
+    }
+    if (this.audioContext.state === 'suspended') {
+      this.audioContext.resume();
+    }
+
+    // "Can't Help Falling In Love" Melody
+    const songMelody = [
+      { f: 392.00, d: 1.2 }, // Wise (G4)
+      { f: 493.88, d: 1.2 }, // men (B4)
+      { f: 587.33, d: 1.8 }, // say (D5)
+      { f: 523.25, d: 0.8 }, // on- (C5)
+      { f: 493.88, d: 0.8 }, // ly (B4)
+      { f: 440.00, d: 0.8 }, // fools (A4)
+      { f: 349.23, d: 1.2 }, // rush (F4)
+      { f: 392.00, d: 1.8 }, // in (G4)
+      { f: 392.00, d: 1.2 }, // But (G4)
+      { f: 329.63, d: 1.2 }, // I (E4)
+      { f: 293.66, d: 1.6 }, // can't (D4)
+      { f: 349.23, d: 1.2 }, // help (F4)
+      { f: 329.63, d: 1.2 }, // fall- (E4)
+      { f: 293.66, d: 1.2 }, // ing (D4)
+      { f: 261.63, d: 2.2 }  // in love with you (C4)
+    ];
+
+    let noteIdx = 0;
+    const playNextNote = () => {
+      if (!this.isPlayingMusic || !this.audioContext) return;
+      const now = this.audioContext.currentTime;
+      const item = songMelody[noteIdx];
+
+      const osc = this.audioContext.createOscillator();
+      const gain = this.audioContext.createGain();
+      const filter = this.audioContext.createBiquadFilter();
+
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(item.f, now);
+
+      filter.type = 'lowpass';
+      filter.frequency.setValueAtTime(1200, now);
+
+      gain.gain.setValueAtTime(0.001, now);
+      gain.gain.exponentialRampToValueAtTime(0.09, now + 0.04);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + item.d);
+
+      osc.connect(filter);
+      filter.connect(gain);
+      gain.connect(this.audioContext.destination);
+
+      osc.start(now);
+      osc.stop(now + item.d + 0.1);
+
+      noteIdx = (noteIdx + 1) % songMelody.length;
+      this.musicTimer = setTimeout(playNextNote, item.d * 900);
+    };
+
+    playNextNote();
   }
 
   playCelebrationSound() {
@@ -497,9 +513,6 @@ class WeddingApp {
       const attending = document.querySelector('input[name="attending"]:checked')?.value || 'yes';
       const guestCount = attending === 'yes' ? parseInt(document.getElementById('guestCount')?.value || '1', 10) : 0;
       const plusOneNames = document.getElementById('plusOneNames')?.value.trim() || '';
-      const meal = attending === 'yes' ? document.getElementById('mealPreference')?.value : 'N/A';
-      const dietary = document.getElementById('dietaryNotes')?.value.trim() || 'None';
-      const songRequest = document.getElementById('songRequest')?.value.trim() || '';
       const message = document.getElementById('weddingWishes')?.value.trim() || '';
 
       if (!fullName || !email) {
@@ -509,7 +522,7 @@ class WeddingApp {
 
       // Generate Ticket ID
       const randomCode = Math.floor(1000 + Math.random() * 9000);
-      const ticketId = `MZ-2026-${randomCode}`;
+      const ticketId = `EH-2026-${randomCode}`;
 
       const newGuest = {
         id: ticketId,
@@ -519,9 +532,6 @@ class WeddingApp {
         attending,
         guestsCount: guestCount,
         plusOneNames,
-        meal,
-        dietary,
-        songRequest,
         message,
         registeredAt: new Date().toISOString()
       };
@@ -573,7 +583,6 @@ class WeddingApp {
     document.getElementById('ticketGuestName').textContent = guest.name;
     document.getElementById('ticketNumber').textContent = `#${guest.id}`;
     document.getElementById('ticketGuestCount').textContent = `${guest.guestsCount} ${guest.guestsCount > 1 ? 'Admissions' : 'Admission'}`;
-    document.getElementById('ticketMeal').textContent = guest.meal;
     document.getElementById('ticketDate').textContent = "Saturday, November 14, 2026";
     document.getElementById('ticketVenue').textContent = "Blessing Hall, Eko Club, Surulere";
 
@@ -1070,7 +1079,7 @@ class WeddingApp {
     if (filtered.length === 0) {
       tableBody.innerHTML = `
         <tr>
-          <td colspan="6" class="px-6 py-8 text-center text-gray-400">
+          <td colspan="5" class="px-6 py-8 text-center text-gray-400">
             No guest registrations found matching your query.
           </td>
         </tr>
@@ -1091,9 +1100,6 @@ class WeddingApp {
             ? `<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800">Attending (${g.guestsCount})</span>`
             : `<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-rose-100 text-rose-800">Declined</span>`
           }
-        </td>
-        <td class="px-4 py-3 text-xs text-gray-600 max-w-xs truncate" title="${g.meal}">
-          ${g.meal}
         </td>
         <td class="px-4 py-3 text-xs text-gray-500 max-w-xs truncate" title="${g.message}">
           ${g.message || '—'}
@@ -1121,7 +1127,7 @@ class WeddingApp {
       return;
     }
 
-    const headers = ["Ticket ID", "Full Name", "Email", "Phone", "Status", "Total Guests", "Plus One Names", "Meal Choice", "Dietary", "Song Request", "Message", "Registered At"];
+    const headers = ["Ticket ID", "Full Name", "Email", "Phone", "Status", "Total Guests", "Plus One Names", "Message", "Registered At"];
     const rows = this.guests.map(g => [
       `"${g.id}"`,
       `"${g.name.replace(/"/g, '""')}"`,
@@ -1130,9 +1136,6 @@ class WeddingApp {
       `"${g.attending}"`,
       g.guestsCount,
       `"${(g.plusOneNames || '').replace(/"/g, '""')}"`,
-      `"${(g.meal || '').replace(/"/g, '""')}"`,
-      `"${(g.dietary || '').replace(/"/g, '""')}"`,
-      `"${(g.songRequest || '').replace(/"/g, '""')}"`,
       `"${(g.message || '').replace(/"/g, '""')}"`,
       `"${g.registeredAt}"`
     ]);

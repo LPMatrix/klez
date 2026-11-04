@@ -39,15 +39,8 @@ Designed with a regal palette of **Emerald Green, Champagne Gold, Mustard Sun, a
      - **Alabaster Ivory** (`#FAF7F2`)
    - Style guidance for traditional Agbada, Gele, and formal tuxedos.
 
-6. **Comprehensive RSVP & Guest Registration**:
-   - Collects: Full Name, Email, WhatsApp / Phone, Attendance status, Number of Attendees (Plus-Ones), Names of Accompanying Guests.
-   - Banquet Meal selection:
-     - Royal Jollof & Fried Rice with Crispy Chicken & Asun
-     - Traditional Pounded Yam & Egusi with Assorted Meat
-     - Grilled Croaker Fish with Dodo & Yam Chips
-     - Seafood Pasta & Lobster Special
-     - Chef's Vegan / Vegetarian Platter
-   - Dietary restrictions & DJ Song Request.
+6. **Streamlined RSVP & Guest Registration**:
+   - Collects: Full Name, Email, WhatsApp / Phone, Attendance status, Number of Attendees (Plus-Ones), and Names of Accompanying Guests.
    - Heartfelt prayer / message for the couple.
 
 7. **Bespoke VIP Digital Access Pass (With Scannable QR Code)**:
@@ -69,7 +62,7 @@ Designed with a regal palette of **Emerald Green, Champagne Gold, Mustard Sun, a
 10. **Organizer / Couple Admin Portal**:
     - Accessible via "Organizer Portal" in the footer.
     - Protected by passcode (`2026`).
-    - Real-time RSVP metrics: Total Registrations, Attending Headcount, Declines, Meal preferences.
+    - Real-time RSVP metrics: Total Registrations, Attending Headcount, Declines.
     - Searchable and filterable guest list.
     - **Export to CSV**: 1-click download of all attendee records for caterers, event security, and planners.
     - **Live Settings Editor**: Change Groom/Bride names, Hashtag, Tagline, and Bank accounts directly on the site!
