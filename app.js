@@ -5,13 +5,13 @@
 
 // Default Configuration State
 const DEFAULT_CONFIG = {
-  groom: "Emmanuel",
   bride: "Haliyah",
+  groom: "Emmanuel",
   weddingDate: "2026-11-14T10:00:00",
-  hashtag: "#EmmanuelAndHaliyah2026",
+  hashtag: "#HaliyahAndEmmanuel2026",
   tagline: "Two Souls, One Divine Covenant in Christ",
   bank: {
-    accountName: "Emmanuel & Haliyah Wedding Fund",
+    accountName: "Haliyah & Emmanuel Wedding Fund",
     bankName: "Guaranty Trust Bank (GTBank)",
     accountNumber: "0789456123",
     sortCode: "058"
@@ -41,7 +41,7 @@ const DEFAULT_WISHES = [
   {
     id: "wish-1",
     name: "Pastor & Mrs. Adebayo",
-    message: "May your marriage be anchored on the Rock of Ages, blessed with enduring peace, fruitfulness, and divine joy. Congratulations to Emmanuel & Haliyah!",
+    message: "May your marriage be anchored on the Rock of Ages, blessed with enduring peace, fruitfulness, and divine joy. Congratulations to Haliyah & Emmanuel!",
     date: "Nov 3, 2026",
     likes: 18
   },
@@ -67,6 +67,14 @@ class WeddingApp {
     this.config = this.loadConfig();
     this.guests = this.loadGuests();
     this.wishes = this.loadWishes();
+
+    // Cloudflare R2 Edge Proxy Setup (Vercel Rewrites Proxy)
+    // When served over HTTP/HTTPS (Vercel or dev server), requests to /api/... proxy to Cloudflare R2 Worker.
+    // When opened directly as a file (file://), fallback directly to worker domain.
+    const isLocalFile = window.location.protocol === 'file:';
+    this.workerDirectUrl = 'https://wedding-r2-api.mubaraqsanusi908.workers.dev';
+    this.apiBase = isLocalFile ? this.workerDirectUrl : '';
+
     this.audioContext = null;
     this.isPlayingMusic = false;
     this.musicTimer = null;
@@ -102,8 +110,8 @@ class WeddingApp {
     if (!saved) return DEFAULT_CONFIG;
     try {
       const parsed = JSON.parse(saved);
-      // Migrate from old placeholder if present
-      if (parsed.bride !== "Haliyah" || parsed.groom !== "Emmanuel") {
+      // Migrate from old placeholder or previous order if present
+      if (parsed.bride !== "Haliyah" || parsed.groom !== "Emmanuel" || parsed.hashtag !== "#HaliyahAndEmmanuel2026") {
         localStorage.setItem('wedding_config', JSON.stringify(DEFAULT_CONFIG));
         return DEFAULT_CONFIG;
       }
@@ -189,26 +197,44 @@ class WeddingApp {
     this.initCalendarButtons();
     this.initCopyButtons();
     this.initNavScroll();
+    this.syncWishesFromR2();
+  }
+
+  apiEndpoint(path) {
+    return `${this.apiBase}${path}`;
+  }
+
+  syncWishesFromR2() {
+    fetch(this.apiEndpoint('/api/wishes'))
+      .then(res => res.json())
+      .then(cloudWishes => {
+        if (Array.isArray(cloudWishes) && cloudWishes.length > 0) {
+          this.wishes = cloudWishes;
+          this.saveWishes();
+          this.renderWishes();
+        }
+      })
+      .catch(err => console.log("Using cached wishes:", err));
   }
 
   applyConfigToDOM() {
-    const { groom, bride, hashtag, tagline, bank, weddingDate } = this.config;
+    const { bride, groom, hashtag, tagline, bank, weddingDate } = this.config;
     
-    // Couple names
+    // Couple names (Bride first)
     document.querySelectorAll('.couple-names').forEach(el => {
-      el.textContent = `${groom} & ${bride}`;
-    });
-
-    document.querySelectorAll('.groom-name').forEach(el => {
-      el.textContent = groom;
+      el.textContent = `${bride} & ${groom}`;
     });
 
     document.querySelectorAll('.bride-name').forEach(el => {
       el.textContent = bride;
     });
 
-    // Monogram
-    const monogram = `${groom.charAt(0)} & ${bride.charAt(0)}`;
+    document.querySelectorAll('.groom-name').forEach(el => {
+      el.textContent = groom;
+    });
+
+    // Monogram (H & E)
+    const monogram = `${bride.charAt(0)} & ${groom.charAt(0)}`;
     document.querySelectorAll('.couple-monogram').forEach(el => {
       el.textContent = monogram;
     });
@@ -539,6 +565,13 @@ class WeddingApp {
       this.guests.unshift(newGuest);
       this.saveGuests();
 
+      // Sync RSVP to Cloudflare R2 via Edge Proxy
+      fetch(this.apiEndpoint('/api/rsvp'), {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newGuest)
+      }).catch(err => console.warn("R2 sync pending, saved locally:", err));
+
       // If a message was written, also add to guest wishes
       if (message.length > 5) {
         const newWish = {
@@ -551,6 +584,13 @@ class WeddingApp {
         this.wishes.unshift(newWish);
         this.saveWishes();
         this.renderWishes();
+
+        // Sync wish to Cloudflare R2 via Edge Proxy
+        fetch(this.apiEndpoint('/api/wishes'), {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(newWish)
+        }).catch(err => console.warn("R2 wish sync pending, saved locally:", err));
       }
 
       // Play Sound & Confetti
@@ -594,7 +634,7 @@ class WeddingApp {
       ticketId: guest.id,
       guest: guest.name,
       partySize: guest.guestsCount,
-      event: `${this.config.groom} & ${this.config.bride} Royal Wedding`,
+      event: `${this.config.bride} & ${this.config.groom} Royal Wedding`,
       date: "2026-11-14",
       status: "VERIFIED_VIP"
     });
@@ -627,7 +667,7 @@ class WeddingApp {
     // WhatsApp share button
     const whatsappBtn = document.getElementById('shareWhatsAppBtn');
     if (whatsappBtn) {
-      const text = encodeURIComponent(`🎉 I just RSVP'd for the Royal Wedding of ${this.config.groom} & ${this.config.bride} on November 14, 2026! Can't wait to celebrate! ${this.config.hashtag}`);
+      const text = encodeURIComponent(`🎉 I just RSVP'd for the Royal Wedding of ${this.config.bride} & ${this.config.groom} on November 14, 2026! Can't wait to celebrate! ${this.config.hashtag}`);
       whatsappBtn.href = `https://api.whatsapp.com/send?text=${text}`;
     }
 
@@ -705,7 +745,7 @@ class WeddingApp {
     ctx.fillStyle = '#ffffff';
     ctx.font = 'bold 54px "Playfair Display", serif';
     ctx.letterSpacing = '1px';
-    ctx.fillText(`${this.config.groom} & ${this.config.bride}`, 90, 185);
+    ctx.fillText(`${this.config.bride} & ${this.config.groom}`, 90, 185);
 
     ctx.fillStyle = '#f3df8a';
     ctx.font = 'italic 24px "Alex Brush", cursive';
@@ -822,6 +862,14 @@ class WeddingApp {
         this.saveWishes();
         this.renderWishes();
         postWishForm.reset();
+
+        // Sync wish to Cloudflare R2 via Edge Proxy
+        fetch(this.apiEndpoint('/api/wishes'), {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(newWish)
+        }).catch(err => console.warn("R2 wish sync pending, saved locally:", err));
+
         this.triggerConfetti();
         this.showToast("Thank you for your heartfelt blessing!", "success");
       });
@@ -876,6 +924,13 @@ class WeddingApp {
       wish.likes += 1;
       this.saveWishes();
       this.renderWishes();
+
+      // Sync like to Cloudflare R2 via Edge Proxy
+      fetch(this.apiEndpoint('/api/wishes/like'), {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id })
+      }).catch(() => {});
     }
   }
 
@@ -889,8 +944,8 @@ class WeddingApp {
         e.preventDefault();
         const start = "20261114T090000Z";
         const end = "20261114T200000Z";
-        const title = encodeURIComponent(`The Wedding of ${this.config.groom} & ${this.config.bride}`);
-        const details = encodeURIComponent(`Join us in celebrating the wedding of ${this.config.groom} & ${this.config.bride}.\nSchedule: Traditional Engagement at 10:00 AM, White Wedding at 12:00 PM, Reception to follow.\nVenue: Blessing Hall, Eko Club, Bode Thomas, Surulere, Lagos.\nDress Code: Emerald Green & Champagne Gold.\nHashtag: ${this.config.hashtag}`);
+        const title = encodeURIComponent(`The Wedding of ${this.config.bride} & ${this.config.groom}`);
+        const details = encodeURIComponent(`Join us in celebrating the wedding of ${this.config.bride} & ${this.config.groom}.\nSchedule: Traditional Engagement at 10:00 AM, White Wedding at 12:00 PM, Reception to follow.\nVenue: Blessing Hall, Eko Club, Bode Thomas, Surulere, Lagos.\nDress Code: Emerald Green & Champagne Gold.\nHashtag: ${this.config.hashtag}`);
         const location = encodeURIComponent("Blessing Hall, Eko Club, Bode Thomas, Surulere, Lagos");
         const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${start}/${end}&details=${details}&location=${location}`;
         window.open(url, '_blank');
@@ -903,12 +958,12 @@ class WeddingApp {
         const icsData = [
           'BEGIN:VCALENDAR',
           'VERSION:2.0',
-          'PRODID:-//Emmanuel and Haliyah Wedding//EN',
+          'PRODID:-//Haliyah and Emmanuel Wedding//EN',
           'CALSCALE:GREGORIAN',
           'METHOD:PUBLISH',
           'BEGIN:VEVENT',
-          'SUMMARY:The Wedding of ' + this.config.groom + ' & ' + this.config.bride,
-          'DESCRIPTION:Join us for the union of ' + this.config.groom + ' & ' + this.config.bride + '. Engagement: 10:00 AM | White Wedding: 12:00 PM. Venue: Blessing Hall, Eko Club, Bode Thomas, Surulere, Lagos.',
+          'SUMMARY:The Wedding of ' + this.config.bride + ' & ' + this.config.groom,
+          'DESCRIPTION:Join us for the union of ' + this.config.bride + ' & ' + this.config.groom + '. Engagement: 10:00 AM | White Wedding: 12:00 PM. Venue: Blessing Hall, Eko Club, Bode Thomas, Surulere, Lagos.',
           'LOCATION:Blessing Hall, Eko Club, Bode Thomas, Surulere, Lagos',
           'DTSTART:20261114T090000Z',
           'DTEND:20261114T200000Z',
@@ -920,7 +975,7 @@ class WeddingApp {
         const blob = new Blob([icsData], { type: 'text/calendar;charset=utf-8' });
         const link = document.createElement('a');
         link.href = window.URL.createObjectURL(blob);
-        link.setAttribute('download', `Wedding_${this.config.groom}_${this.config.bride}.ics`);
+        link.setAttribute('download', `Wedding_${this.config.bride}_${this.config.groom}.ics`);
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
@@ -995,6 +1050,21 @@ class WeddingApp {
         adminContentView.classList.remove('hidden');
         this.refreshAdminStats();
         this.renderGuestTable();
+
+        // Fetch real-time RSVPs from Cloudflare R2 via Edge Proxy
+        fetch(this.apiEndpoint('/api/rsvps'), {
+          headers: { 'Authorization': `Bearer ${pass}` }
+        })
+          .then(res => res.json())
+          .then(cloudGuests => {
+            if (Array.isArray(cloudGuests)) {
+              this.guests = cloudGuests;
+              this.saveGuests();
+              this.refreshAdminStats();
+              this.renderGuestTable();
+            }
+          })
+          .catch(err => console.warn("Could not fetch R2 guests:", err));
       } else {
         this.showToast("Incorrect passcode. Access denied.", "error");
       }
@@ -1020,12 +1090,38 @@ class WeddingApp {
       exportCsvBtn.addEventListener('click', () => this.exportGuestsToCSV());
     }
 
+    // Cloudflare R2 Connection Test via Vercel Edge Proxy
+    const testR2Btn = document.getElementById('testR2HealthBtn');
+    if (testR2Btn) {
+      testR2Btn.addEventListener('click', () => {
+        testR2Btn.textContent = 'Testing...';
+        testR2Btn.disabled = true;
+
+        fetch(this.apiEndpoint('/api/status'))
+          .then(res => res.json())
+          .then(data => {
+            if (data.status === 'online') {
+              this.showToast("Cloudflare R2 Bucket verified & online!", "success");
+            } else {
+              this.showToast(`Status: ${data.status}`, "info");
+            }
+          })
+          .catch(err => {
+            this.showToast("Connection test failed: " + err.message, "error");
+          })
+          .finally(() => {
+            testR2Btn.textContent = 'Test Connection';
+            testR2Btn.disabled = false;
+          });
+      });
+    }
+
     // Settings Form in Admin
     const settingsForm = document.getElementById('weddingSettingsForm');
     if (settingsForm) {
       // Preload current config
-      document.getElementById('editGroom').value = this.config.groom;
       document.getElementById('editBride').value = this.config.bride;
+      document.getElementById('editGroom').value = this.config.groom;
       document.getElementById('editHashtag').value = this.config.hashtag;
       document.getElementById('editTagline').value = this.config.tagline;
       document.getElementById('editAccountNo').value = this.config.bank.accountNumber;
@@ -1033,8 +1129,8 @@ class WeddingApp {
 
       settingsForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        this.config.groom = document.getElementById('editGroom').value.trim();
         this.config.bride = document.getElementById('editBride').value.trim();
+        this.config.groom = document.getElementById('editGroom').value.trim();
         this.config.hashtag = document.getElementById('editHashtag').value.trim();
         this.config.tagline = document.getElementById('editTagline').value.trim();
         this.config.bank.accountNumber = document.getElementById('editAccountNo').value.trim();
@@ -1144,7 +1240,7 @@ class WeddingApp {
     const encodedUri = encodeURI(csvContent);
     const link = document.createElement("a");
     link.setAttribute("href", encodedUri);
-    link.setAttribute("download", `Wedding_Guests_Export_${this.config.groom}_${this.config.bride}.csv`);
+    link.setAttribute("download", `Wedding_Guests_Export_${this.config.bride}_${this.config.groom}.csv`);
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);

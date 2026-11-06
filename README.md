@@ -1,6 +1,6 @@
 # 👑 The Royal Wedding E-Invite & Guest Registration System
 
-A luxury, interactive e-invitation and guest registration web application created for the wedding celebration of **Emmanuel & Haliyah** on **Saturday, November 14, 2026** at **Blessing Hall, Eko Club, Bode Thomas, Surulere, Lagos**.
+A luxury, interactive e-invitation and guest registration web application created for the wedding celebration of **Haliyah & Emmanuel** on **Saturday, November 14, 2026** at **Blessing Hall, Eko Club, Bode Thomas, Surulere, Lagos**.
 
 Designed with a regal palette of **Emerald Green, Champagne Gold, Mustard Sun, and Ivory Silk**, celebrating the rich heritage, cultural elegance, and modern haute couture of the couple.
 
@@ -11,7 +11,7 @@ Designed with a regal palette of **Emerald Green, Champagne Gold, Mustard Sun, a
 1. **Ethereal Hero & Dynamic Countdown**:
    - Live countdown timer down to the second for **November 14, 2026**.
    - Romantic typography (*Playfair Display*, *Cormorant Garamond*, and *Alex Brush*).
-   - Monogram crest (**E & H**) and celebratory blessings.
+   - Monogram crest (**H & E**) and celebratory blessings.
 
 2. **Ambient Wedding Melody**:
    - Built-in Web Audio API romantic harp & string arpeggio synthesizer with play/pause and animated audio wave indicators.
@@ -79,9 +79,21 @@ Simply open `index.html` in any modern web browser (Google Chrome, Safari, Micro
 # In the project directory:
 npm start
 # or
-node server.js
+node dev-server.js
 ```
 Then visit: **http://localhost:3000** in your browser.
+
+---
+
+## ☁️ Cloudflare R2 Cloud Storage (Option B: Vercel Edge Proxy)
+- **Architecture**: The frontend calls `/api/*` endpoints relative to your wedding domain.
+- **Vercel Rewrites**: Handled via `vercel.json`, requests are securely proxied directly to:
+  `https://wedding-r2-api.mubaraqsanusi908.workers.dev/api/:path*`
+- **Data Stored in R2**:
+  - `rsvps/<guest-id>.json`: Complete RSVP registration details.
+  - `wishes/<wish-id>.json`: Prayers and wishes posted to the live Wishes Wall.
+  - Likes sync in real time.
+- **Admin Access**: Protected via `Authorization: Bearer 2026`.
 
 ---
 
@@ -90,22 +102,23 @@ Then visit: **http://localhost:3000** in your browser.
 ├── index.html           # Main semantic HTML5 application
 ├── style.css            # Luxury theme styling, gold effects & animations
 ├── app.js               # Application logic, audio synth, RSVP, QR pass & admin
-├── server.js            # Zero-dependency local Node server
+├── dev-server.js        # Local development server with built-in R2 proxy
+├── vercel.json          # Vercel static routing & /api/* edge proxy to Cloudflare R2
 ├── package.json         # Project metadata and start scripts
 ├── README.md            # Documentation and instructions
+├── cloudflare-worker/   # Cloudflare Worker connecting to R2 storage
+│   ├── worker.js        # Worker script handling /api/rsvp, /api/wishes, /api/rsvps
+│   └── wrangler.toml    # Cloudflare Wrangler deployment configuration
 └── assets/
-    └── images/
-        ├── couple-dance.jpg     # Joyful traditional green & gold dance
-        ├── couple-embrace.jpg   # Intimate couple embrace portrait
-        ├── couple-modern.jpg    # Modern mustard suit & white lace veil
-        └── couple-regal.jpg     # Traditional seated & standing regality
+    ├── audio/           # Johnny Drille - Count on You (MP3 & M4A)
+    └── images/          # Couple pre-wedding portraits
 ```
 
 ---
 
 ## 💍 Customization Notes
 - **Admin Passcode**: `2026`
-- **Default Names**: *Emmanuel & Haliyah*
+- **Default Names**: *Haliyah & Emmanuel*
 - **Venue**: Blessing Hall, Eko Club, Bode Thomas, Surulere, Lagos
 - **Schedule**: Engagement: 10:00 AM | White Wedding: 12:00 PM | Reception to follow
 - **Date**: Saturday, November 14, 2026
